@@ -7,197 +7,233 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
+/* ── PSYCHOLOGY OF COLOR: Warm off-white base (trust, openness), 
+   slate-navy accents (credibility, intelligence), 
+   amber gold (warmth, creativity), teal (innovation, skill).
+   High contrast text, nothing "too dark" — feels approachable + capable. ── */
 :root {
-  --bg:     #08090d;
-  --bg2:    #0d0f15;
-  --bg3:    #121520;
-  --surface:#171b26;
-  --border: rgba(255,255,255,0.07);
-  --border2:rgba(255,255,255,0.12);
-  --text:   #dfe2e8;
-  --muted:  #6e7585;
-  --amber:  #d4913a;
-  --amber-l:rgba(212,145,58,0.12);
-  --teal:   #3ba8a0;
+  --bg:      #f4f6f9;
+  --bg2:     #eef1f6;
+  --bg3:     #ffffff;
+  --surface: #e8ecf3;
+  --border:  rgba(44,62,100,0.10);
+  --border2: rgba(44,62,100,0.18);
+  --ink:     #1a2340;
+  --ink2:    #2c3e64;
+  --muted:   #4a5470;
+  --amber:   #c47f2a;
+  --amber-bg:rgba(196,127,42,0.08);
+  --teal:    #1a7a74;
+  --teal-bg: rgba(26,122,116,0.08);
+  --navy:    #1a2340;
   --font-serif:'Libre Baskerville',Georgia,serif;
   --font-sans:'IBM Plex Sans',sans-serif;
   --font-mono:'IBM Plex Mono',monospace;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-weight:400;overflow-x:hidden;cursor:none}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-weight:400;overflow-x:hidden;cursor:none;line-height:1.6}
 
 /* cursor */
-.cursor{position:fixed;width:8px;height:8px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);mix-blend-mode:screen}
-.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(212,145,58,.35);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .22s,height .22s}
+.cursor{position:fixed;width:9px;height:9px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%)}
+.cursor-ring{position:fixed;width:30px;height:30px;border:1.5px solid rgba(196,127,42,.45);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
 
-/* neural bg */
-#neural-canvas{position:fixed;inset:0;z-index:0;opacity:.22}
+/* neural bg — subtle, light */
+#neural-canvas{position:fixed;inset:0;z-index:0;opacity:.12}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:rgba(8,9,13,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.16em;color:var(--amber);text-decoration:none;text-transform:uppercase}
-.nav-links{display:flex;gap:34px;list-style:none}
-.nav-links a{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .18s;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .22s}
-.nav-links a:hover{color:var(--text)}.nav-links a:hover::after{transform:scaleX(1)}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:18px 60px;background:rgba(244,246,249,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border2)}
+.nav-logo{font-family:var(--font-serif);font-size:.9rem;font-weight:700;color:var(--navy);text-decoration:none;letter-spacing:.01em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .18s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .22s}
+.nav-links a:hover{color:var(--navy)}.nav-links a:hover::after{transform:scaleX(1)}
 
 /* ── HERO ── */
 main{position:relative;z-index:1}
-#hero{min-height:100vh;display:grid;grid-template-columns:1fr 340px;align-items:center;gap:80px;padding:120px 60px 80px;position:relative}
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 300px;align-items:start;gap:64px;padding:120px 60px 72px;position:relative}
 .hero-left{}
-.hero-label{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:24px;opacity:0;animation:up .6s .1s forwards;display:flex;align-items:center;gap:12px}
-.hero-label::before{content:'';display:block;width:32px;height:1px;background:var(--amber)}
-h1.hero-name{font-family:var(--font-serif);font-size:clamp(3.2rem,5.5vw,6.2rem);font-weight:700;line-height:.96;letter-spacing:-.02em;opacity:0;animation:up .75s .22s forwards}
+.hero-label{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;opacity:0;animation:up .6s .1s forwards;display:flex;align-items:center;gap:12px}
+.hero-label::before{content:'';display:block;width:28px;height:1.5px;background:var(--amber)}
+h1.hero-name{font-family:var(--font-serif);font-size:clamp(3rem,5.2vw,5.8rem);font-weight:700;line-height:.95;letter-spacing:-.025em;opacity:0;animation:up .75s .22s forwards;color:var(--navy)}
 h1.hero-name .line2{display:block;font-style:italic;font-weight:400;color:var(--amber)}
-.hero-desc{margin-top:28px;max-width:520px;font-size:.97rem;line-height:1.82;color:var(--muted);opacity:0;animation:up .75s .38s forwards}
-.hero-desc strong{color:var(--text);font-weight:500}
-.hero-chips{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .75s .52s forwards}
-.chip{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--border2);color:var(--muted);transition:border-color .18s,color .18s}
-.chip:hover{border-color:var(--amber);color:var(--amber)}
-.hero-actions{margin-top:40px;display:flex;gap:14px;opacity:0;animation:up .75s .66s forwards}
-.btn{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;padding:13px 28px;text-decoration:none;transition:all .18s}
-.btn-fill{background:var(--amber);color:var(--bg);font-weight:600}
-.btn-fill:hover{background:#e09d42;transform:translateY(-2px);box-shadow:0 8px 22px rgba(212,145,58,.22)}
-.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border2)}
-.btn-ghost:hover{color:var(--text);border-color:rgba(255,255,255,.22)}
+.hero-subtitle{margin-top:12px;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;color:var(--muted);opacity:0;animation:up .75s .32s forwards}
+.hero-desc{margin-top:26px;max-width:580px;font-size:1.05rem;line-height:1.82;color:var(--muted);opacity:0;animation:up .75s .38s forwards}
+.hero-desc strong{color:var(--ink);font-weight:600}
+.hero-chips{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px;opacity:0;animation:up .75s .52s forwards}
+.chip{font-family:var(--font-mono);font-size:.59rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 13px;border:1.5px solid var(--border2);color:var(--muted);background:var(--bg3);transition:border-color .18s,color .18s,background .18s}
+.chip:hover{border-color:var(--amber);color:var(--amber);background:var(--amber-bg)}
+.hero-actions{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:up .75s .66s forwards}
+.btn{font-family:var(--font-mono);font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;padding:13px 26px;text-decoration:none;transition:all .18s;display:inline-block}
+.btn-fill{background:var(--navy);color:#fff;font-weight:500}
+.btn-fill:hover{background:var(--ink2);transform:translateY(-2px);box-shadow:0 8px 22px rgba(26,35,64,.18)}
+.btn-amber{background:var(--navy);color:#fff;font-weight:500;border:1.5px solid var(--navy)}
+.btn-amber:hover{background:var(--ink2);transform:translateY(-2px);box-shadow:0 8px 22px rgba(26,35,64,.18)}
+.btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:#fff}
 
-/* hero photo */
-.hero-right{opacity:0;animation:fadeIn .9s .3s forwards;display:flex;flex-direction:column;gap:16px}
-.hero-photo-frame{position:relative;width:100%}
-.hero-photo-frame::after{content:'';position:absolute;top:14px;left:14px;right:-14px;bottom:-14px;border:1px solid rgba(212,145,58,.3);z-index:0;pointer-events:none}
-.hero-photo{width:100%;aspect-ratio:3/4;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;z-index:1}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:top}
-.photo-hint{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center;padding:16px;line-height:2}
-.photo-corner{position:absolute;width:14px;height:14px;border-color:var(--amber);border-style:solid;opacity:.5}
-.photo-corner.tl{top:6px;left:6px;border-width:1px 0 0 1px}
-.photo-corner.tr{top:6px;right:6px;border-width:1px 1px 0 0}
-.photo-corner.bl{bottom:6px;left:6px;border-width:0 0 1px 1px}
-.photo-corner.br{bottom:6px;right:6px;border-width:0 1px 1px 0}
-
-/* hero quick stats */
+/* hero photo — aligned with name, not label */
+.hero-right{opacity:0;animation:fadeIn .9s .3s forwards;display:flex;flex-direction:column;gap:14px;padding-top:52px}
+.hero-photo-wrap{position:relative;width:100%}
+.hero-photo-wrap::after{content:'';position:absolute;top:12px;left:12px;right:-12px;bottom:-12px;border:1.5px solid rgba(196,127,42,.35);z-index:0;pointer-events:none}
+.hero-photo{width:100%;aspect-ratio:3/4;background:var(--surface);border:1.5px solid var(--border2);overflow:hidden;position:relative;z-index:1;display:block}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.photo-placeholder{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center;padding:16px;line-height:2}
+/* stat pair — only 2 stats */
 .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.hstat{background:var(--bg3);border:1px solid var(--border);padding:16px 18px}
-.hstat-num{font-family:var(--font-serif);font-size:1.6rem;font-weight:700;color:var(--text);line-height:1}
-.hstat-sub{font-family:var(--font-mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:5px;line-height:1.5}
-
-.scroll-hint{position:absolute;bottom:38px;left:60px;display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);opacity:0;animation:up 1s 1.1s forwards}
-.scroll-line{width:32px;height:1px;background:var(--muted)}
+.hstat{background:var(--bg3);border:1.5px solid var(--border);padding:16px 16px;transition:border-color .2s}
+.hstat:hover{border-color:var(--amber)}
+.hstat-num{font-family:var(--font-serif);font-size:1.7rem;font-weight:700;color:var(--navy);line-height:1}
+.hstat-sub{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:5px;line-height:1.55}
+.scroll-hint{position:absolute;bottom:32px;left:60px;display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);opacity:0;animation:up 1s 1.2s forwards}
+.scroll-line{width:28px;height:1px;background:var(--muted)}
 
 /* ── SECTIONS ── */
-section{padding:96px 60px;position:relative;z-index:1}
-.sec-eyebrow{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
-h2.sec-title{font-family:var(--font-serif);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:700;line-height:1.1;letter-spacing:-.01em;margin-bottom:56px;color:var(--text)}
+section{padding:88px 60px;position:relative;z-index:1}
+section:nth-child(even){background:var(--bg2)}
+section:nth-child(odd){background:var(--bg)}
+.sec-eyebrow{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+h2.sec-title{font-family:var(--font-serif);font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:700;line-height:1.1;letter-spacing:-.01em;margin-bottom:48px;color:var(--navy)}
+
+/* ── RECRUITER BANNER ── */
+#recruiter{background:var(--navy);padding:64px 60px}
+#recruiter .sec-eyebrow{color:rgba(255,255,255,.4)}
+#recruiter h2.sec-title{color:#fff;margin-bottom:0}
+.recruiter-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-top:48px}
+.recruiter-quotes{}
+.quote-block{margin-bottom:28px}
+.quote-text{font-family:var(--font-serif);font-size:1.18rem;font-style:italic;color:rgba(255,255,255,.82);line-height:1.75;margin-bottom:8px}
+.quote-attr{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(196,127,42,.9)}
+.recruiter-message{}
+.rm-heading{font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:#fff;line-height:1.25;margin-bottom:18px}
+.rm-heading em{font-style:italic;color:var(--amber)}
+.rm-body{font-size:1rem;line-height:1.85;color:rgba(255,255,255,.7);margin-bottom:20px}
+.rm-body strong{color:#fff;font-weight:500}
+.rm-sign{font-family:var(--font-serif);font-size:.9rem;font-style:italic;color:rgba(255,255,255,.45);margin-top:24px}
+
+/* ── EDUCATION ── */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.edu-card{background:var(--bg3);border:1.5px solid var(--border);padding:36px;transition:border-color .22s;position:relative;overflow:hidden}
+.edu-card:hover{border-color:rgba(196,127,42,.35)}
+.edu-logo{height:44px;margin-bottom:16px;display:flex;align-items:center}
+.edu-logo img{height:100%;width:auto;object-fit:contain}
+.edu-logo-placeholder{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:6px 12px;border:1px solid var(--border2)}
+.edu-school{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.edu-degree{font-family:var(--font-serif);font-size:1.08rem;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:10px}
+.edu-meta{font-family:var(--font-mono);font-size:.66rem;color:var(--muted);line-height:1.8}
+.edu-gpa{display:inline-block;margin-top:10px;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.06em;color:var(--navy);background:var(--amber-bg);border:1px solid rgba(196,127,42,.3);padding:4px 10px;font-weight:500}
 
 /* ── ABOUT ── */
-#about{background:var(--bg2)}
-.about-grid{display:grid;grid-template-columns:1fr 360px;gap:80px;align-items:start}
-.about-text p{font-size:.97rem;line-height:1.88;color:var(--muted);margin-bottom:20px}
-.about-text p strong{color:var(--text);font-weight:500}
-.about-contact{margin-top:32px;display:flex;flex-direction:column;gap:10px}
-.contact-item{display:flex;gap:14px;font-family:var(--font-mono);font-size:.68rem;align-items:flex-start}
-.contact-item .key{color:var(--amber);letter-spacing:.08em;text-transform:uppercase;font-size:.55rem;width:48px;flex-shrink:0;padding-top:2px}
+.about-grid{display:grid;grid-template-columns:1fr;gap:0}
+.about-text p{font-size:1.02rem;line-height:1.9;color:var(--muted);margin-bottom:18px}
+.about-text p strong{color:var(--ink);font-weight:600}
+.about-contact{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:8px 40px}
+.contact-item{display:flex;gap:12px;font-family:var(--font-mono);font-size:.68rem;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--border)}
+.contact-item .key{color:var(--amber);letter-spacing:.08em;text-transform:uppercase;font-size:.55rem;width:60px;flex-shrink:0;padding-top:2px;font-weight:500}
 .contact-item .val{color:var(--muted);line-height:1.5}
 .contact-item a{color:var(--muted);text-decoration:none;transition:color .18s}.contact-item a:hover{color:var(--amber)}
-.about-right{}
-.about-photo{width:100%;aspect-ratio:3/4;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:2px}
-.about-photo img{width:100%;height:100%;object-fit:cover;object-position:top}
 
 /* ── EXPERIENCE ── */
 .exp-entries{display:flex;flex-direction:column;gap:2px}
-.exp-card{background:var(--bg3);border:1px solid var(--border);padding:36px;transition:border-color .22s}
-.exp-card:hover{border-color:rgba(212,145,58,.22)}
+.exp-card{background:var(--bg3);border:1.5px solid var(--border);padding:32px;transition:border-color .22s}
+.exp-card:hover{border-color:rgba(196,127,42,.3)}
 .exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:6px}
-.exp-role{font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--text)}
-.exp-period{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.08em;color:var(--muted);padding:4px 10px;border:1px solid var(--border);white-space:nowrap}
-.exp-org{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;color:var(--amber);margin-bottom:18px}
-.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:9px}
-.exp-bullets li{font-size:.9rem;line-height:1.75;color:var(--muted);padding-left:18px;position:relative}
-.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--amber);font-size:.65rem;top:4px}
+.exp-role{font-family:var(--font-serif);font-size:1.08rem;font-weight:700;color:var(--navy)}
+.exp-period{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.08em;color:var(--muted);padding:4px 10px;border:1px solid var(--border2);white-space:nowrap;background:var(--surface)}
+.exp-org{font-family:var(--font-mono);font-size:.63rem;letter-spacing:.06em;color:var(--amber);margin-bottom:16px;font-weight:500}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:8px}
+.exp-bullets li{font-size:.94rem;line-height:1.78;color:var(--muted);padding-left:18px;position:relative}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--amber);font-size:.62rem;top:4px}
 
 /* ── RESEARCH ── */
-#research{background:var(--bg2)}
 .research-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.research-card{background:var(--bg3);border:1px solid var(--border);padding:40px;position:relative;overflow:hidden;transition:border-color .22s}
-.research-card:hover{border-color:rgba(59,168,160,.28)}
-.research-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--teal),transparent);opacity:0;transition:opacity .28s}
+.research-card{background:var(--bg3);border:1.5px solid var(--border);padding:36px;position:relative;overflow:hidden;transition:border-color .22s}
+.research-card:hover{border-color:rgba(26,122,116,.35)}
+.research-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--teal),transparent);opacity:0;transition:opacity .28s}
 .research-card:hover::before{opacity:1}
-.research-tag{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:16px;display:flex;align-items:center;gap:7px}
+.research-tag{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;display:flex;align-items:center;gap:7px}
 .research-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0}
-.research-title{font-family:var(--font-serif);font-size:1.08rem;font-weight:700;line-height:1.38;margin-bottom:14px;color:var(--text)}
-.research-body{font-size:.86rem;line-height:1.82;color:var(--muted)}
-.research-period{font-family:var(--font-mono);font-size:.56rem;color:var(--muted);opacity:.55;margin-top:20px;display:block}
+.research-title{font-family:var(--font-serif);font-size:1.05rem;font-weight:700;line-height:1.38;margin-bottom:12px;color:var(--navy)}
+.research-body{font-size:.9rem;line-height:1.82;color:var(--muted)}
+.research-period{font-family:var(--font-mono);font-size:.56rem;color:var(--muted);opacity:.7;margin-top:18px;display:block}
 
 /* ── PROJECTS ── */
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.project-card{background:var(--bg3);border:1px solid var(--border);padding:32px;transition:border-color .22s,transform .22s;display:flex;flex-direction:column}
-.project-card:hover{border-color:rgba(212,145,58,.22);transform:translateY(-3px)}
-.project-number{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.12em;color:var(--muted);opacity:.5;margin-bottom:14px;text-transform:uppercase}
-.project-title{font-family:var(--font-serif);font-size:1rem;font-weight:700;line-height:1.35;color:var(--text);margin-bottom:12px}
-.project-desc{font-size:.83rem;line-height:1.75;color:var(--muted);margin-bottom:18px;flex:1}
+.project-card{background:var(--bg3);border:1.5px solid var(--border);padding:28px;transition:border-color .22s,transform .22s;display:flex;flex-direction:column}
+.project-card:hover{border-color:rgba(196,127,42,.3);transform:translateY(-3px);box-shadow:0 6px 20px rgba(26,35,64,.07)}
+.project-number{font-family:var(--font-mono);font-size:.54rem;letter-spacing:.12em;color:var(--muted);opacity:.6;margin-bottom:12px;text-transform:uppercase}
+.project-title{font-family:var(--font-serif);font-size:.97rem;font-weight:700;line-height:1.35;color:var(--navy);margin-bottom:10px}
+.project-desc{font-size:.87rem;line-height:1.75;color:var(--muted);margin-bottom:16px;flex:1}
 .project-stack{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto}
-.stack-tag{font-family:var(--font-mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;background:var(--bg);border:1px solid var(--border);color:var(--muted)}
+.stack-tag{font-family:var(--font-mono);font-size:.53rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;background:var(--surface);border:1px solid var(--border2);color:var(--muted)}
 
 /* ── PUBLICATIONS ── */
-#publications{background:var(--bg2)}
 .pub-list{display:flex;flex-direction:column;gap:2px}
-.pub-card{background:var(--bg3);border:1px solid var(--border);padding:32px 36px;display:grid;grid-template-columns:48px 1fr auto;gap:22px;align-items:start;transition:border-color .22s}
-.pub-card:hover{border-color:rgba(212,145,58,.22)}
-.pub-idx{font-family:var(--font-serif);font-size:1.8rem;font-weight:700;color:rgba(255,255,255,.05);line-height:1}
-.pub-title{font-family:var(--font-serif);font-size:.97rem;font-weight:700;color:var(--text);margin-bottom:7px;line-height:1.4}
-.pub-authors{font-size:.78rem;color:var(--muted);font-style:italic;margin-bottom:7px}
-.pub-venue{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.06em;color:var(--amber);text-transform:uppercase}
-.pub-venue a{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(212,145,58,.3);transition:border-color .18s}
-.pub-venue a:hover{border-color:var(--amber)}
-.pub-status{font-family:var(--font-mono);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;white-space:nowrap;align-self:start}
-.pub-status.published{color:var(--teal);border:1px solid rgba(59,168,160,.25);background:rgba(59,168,160,.07)}
-.pub-status.review{color:var(--amber);border:1px solid rgba(212,145,58,.25);background:rgba(212,145,58,.07)}
+a.pub-card{background:var(--bg3);border:1.5px solid var(--border);padding:28px 32px;display:grid;grid-template-columns:44px 1fr auto;gap:20px;align-items:start;transition:border-color .22s,background .2s;text-decoration:none;cursor:pointer}
+a.pub-card:hover{border-color:rgba(196,127,42,.35);background:var(--amber-bg)}
+.pub-idx{font-family:var(--font-serif);font-size:1.6rem;font-weight:700;color:rgba(26,35,64,.1);line-height:1}
+.pub-title{font-family:var(--font-serif);font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.4}
+.pub-authors{font-size:.78rem;color:var(--muted);font-style:italic;margin-bottom:6px}
+.pub-venue{font-family:var(--font-mono);font-size:.57rem;letter-spacing:.06em;color:var(--amber);text-transform:uppercase}
+.pub-journal-photo{margin-top:10px;width:100%;max-height:100px;object-fit:cover;display:block;border:1px solid var(--border);opacity:.85}
+.pub-status{font-family:var(--font-mono);font-size:.53rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;white-space:nowrap;align-self:start}
+.pub-status.published{color:var(--teal);border:1px solid rgba(26,122,116,.3);background:var(--teal-bg)}
+.pub-status.review{color:var(--amber);border:1px solid rgba(196,127,42,.3);background:var(--amber-bg)}
 
 /* ── SKILLS ── */
 .skills-layout{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
-.skill-group-head{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);padding-bottom:12px;border-bottom:1px solid var(--border);margin-bottom:20px}
-.skill-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.03)}
-.skill-name{font-size:.86rem;color:var(--text);font-family:var(--font-sans)}
-.skill-track{width:64px;height:2px;background:rgba(255,255,255,.08);position:relative;overflow:hidden}
-.skill-fill{position:absolute;top:0;left:0;bottom:0;background:rgba(255,255,255,.28)}
+.skill-group-head{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);padding-bottom:12px;border-bottom:1.5px solid var(--border2);margin-bottom:18px;font-weight:500}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.skill-pill{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;padding:7px 14px;background:var(--bg3);border:1.5px solid var(--border2);color:var(--ink2);transition:border-color .18s,color .18s,background .18s}
+.skill-pill:hover{border-color:var(--amber);color:var(--amber);background:var(--amber-bg)}
 
-/* ── EDUCATION ── */
-#education{background:var(--bg2)}
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.edu-card{background:var(--bg3);border:1px solid var(--border);padding:40px;position:relative;overflow:hidden;transition:border-color .22s}
-.edu-card:hover{border-color:rgba(212,145,58,.22)}
-.edu-glyph{font-family:var(--font-serif);font-size:4.5rem;font-weight:700;color:rgba(255,255,255,.025);line-height:1;position:absolute;top:18px;right:22px;user-select:none;font-style:italic}
-.edu-school{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
-.edu-degree{font-family:var(--font-serif);font-size:1.18rem;font-weight:700;color:var(--text);line-height:1.32;margin-bottom:12px}
-.edu-meta{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);line-height:1.9}
-.edu-gpa{display:inline-block;margin-top:10px;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;color:var(--text);background:var(--amber-l);border:1px solid rgba(212,145,58,.25);padding:4px 10px}
+/* ── CONTACT SECTION ── */
+#contact{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.contact-info-list{display:flex;flex-direction:column;gap:0}
+.ci-row{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border)}
+.ci-label{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);width:72px;flex-shrink:0;padding-top:2px;font-weight:500}
+.ci-val{font-size:.94rem;color:var(--ink2);line-height:1.5}
+.ci-val a{color:var(--ink2);text-decoration:none;transition:color .18s}
+.ci-val a:hover{color:var(--amber)}
+.contact-cta-box{background:var(--navy);padding:40px 36px}
+.cta-headline{font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:14px}
+.cta-body{font-size:.94rem;line-height:1.8;color:rgba(255,255,255,.65);margin-bottom:28px}
+.cta-links{display:flex;flex-direction:column;gap:10px}
+.cta-link{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:12px 20px;text-decoration:none;transition:all .18s;display:inline-block;text-align:center}
+.cta-link.primary{background:var(--amber);color:#fff}
+.cta-link.primary:hover{background:#b5721f}
+.cta-link.secondary{background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.2)}
+.cta-link.secondary:hover{color:#fff;border-color:rgba(255,255,255,.5)}
 
 /* ── FOOTER ── */
-footer{position:relative;z-index:1;padding:56px 60px;background:var(--bg);border-top:1px solid var(--border);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:40px}
-.footer-name{font-family:var(--font-serif);font-size:1.4rem;font-weight:700;color:var(--text);display:block;margin-bottom:4px}
-.footer-tagline{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
-.footer-center{text-align:center;font-family:var(--font-mono);font-size:.54rem;letter-spacing:.1em;color:rgba(255,255,255,.1);text-transform:uppercase}
-.footer-right{display:flex;justify-content:flex-end;gap:24px;list-style:none}
-.footer-right a{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .18s}
-.footer-right a:hover{color:var(--amber)}
+footer{position:relative;z-index:1;padding:48px 60px;background:var(--navy);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:40px}
+.footer-name{font-family:var(--font-serif);font-size:1.2rem;font-weight:700;color:#fff;display:block;margin-bottom:4px}
+.footer-tagline{font-family:var(--font-mono);font-size:.54rem;letter-spacing:.1em;color:rgba(255,255,255,.4);text-transform:uppercase}
+.footer-center{text-align:center;font-family:var(--font-mono);font-size:.52rem;letter-spacing:.1em;color:rgba(255,255,255,.2);text-transform:uppercase}
+.footer-right{display:flex;justify-content:flex-end;gap:22px;list-style:none}
+.footer-right a{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);text-decoration:none;transition:color .18s}
+.footer-right a:hover{color:rgba(255,255,255,.9)}
 
 /* ── ANIMATIONS ── */
-@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1040px){
-  nav{padding:18px 24px}.nav-links{gap:20px}
-  #hero{grid-template-columns:1fr;padding:110px 24px 70px;gap:48px}
-  .hero-right{order:-1;display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start}
-  .scroll-hint{left:24px}
-  section{padding:80px 24px}
-  .about-grid{grid-template-columns:1fr}
-  .research-grid,.edu-grid{grid-template-columns:1fr}
+  nav{padding:16px 22px}.nav-links{gap:16px}
+  #hero{grid-template-columns:1fr;padding:108px 22px 64px;gap:40px}
+  .hero-right{display:grid;grid-template-columns:180px 1fr;gap:14px;align-items:start}
+  .scroll-hint{left:22px}
+  section{padding:72px 22px}
+  #recruiter{padding:56px 22px}
+  .recruiter-inner{grid-template-columns:1fr;gap:40px}
+  .research-grid,.edu-grid,.contact-grid{grid-template-columns:1fr}
   .projects-grid{grid-template-columns:1fr 1fr}
   .skills-layout{grid-template-columns:1fr 1fr}
+  .about-contact{grid-template-columns:1fr}
   footer{grid-template-columns:1fr;text-align:center}.footer-right{justify-content:center}
 }
 @media(max-width:640px){
@@ -205,7 +241,7 @@ footer{position:relative;z-index:1;padding:56px 60px;background:var(--bg);border
   #hero{grid-template-columns:1fr}
   .hero-right{grid-template-columns:1fr}
   .projects-grid,.skills-layout{grid-template-columns:1fr}
-  .pub-card{grid-template-columns:1fr}.pub-idx{display:none}
+  a.pub-card{grid-template-columns:1fr}.pub-idx{display:none}
 }
 </style>
 </head>
@@ -217,19 +253,20 @@ footer{position:relative;z-index:1;padding:56px 60px;background:var(--bg);border
 <nav>
   <a href="#hero" class="nav-logo">Reneth Raj Simon</a>
   <ul class="nav-links">
+    <li><a href="#education">Education</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#publications">Publications</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <main>
 
-<!-- HERO -->
+<!-- ── HERO ── -->
 <section id="hero">
   <div class="hero-left">
     <div class="hero-label">Columbia University &nbsp;·&nbsp; MS Computer Science</div>
@@ -237,10 +274,11 @@ footer{position:relative;z-index:1;padding:56px 60px;background:var(--bg);border
       Reneth
       <span class="line2">Raj Simon</span>
     </h1>
+    <p class="hero-subtitle">Pursuing MS in Computer Science at Columbia University</p>
     <p class="hero-desc">
-      <strong>AI/ML researcher and engineer</strong> specialising in deep learning, computer vision, and natural language processing.
-      Graduate Research Assistant at Columbia's GIML Lab — applying multimodal AI to forensic investigation.
-      Published author in medical imaging. Experienced in building end-to-end AI systems from research to deployment.
+      <strong>AI/ML Researcher &amp; Engineer</strong> specializing in deep learning, computer vision, and natural language processing.
+      Graduate Research Assistant at Columbia's GILM Lab. Published author in medical AI.
+      Building systems that bridge rigorous research and real-world impact.
     </p>
     <div class="hero-chips">
       <span class="chip">Deep Learning</span>
@@ -251,17 +289,17 @@ footer{position:relative;z-index:1;padding:56px 60px;background:var(--bg);border
     </div>
     <div class="hero-actions">
       <a href="#research" class="btn btn-fill">View Research</a>
+      <a href="https://renethsimon13.github.io/Reneth-Raj-Simon---CV/" target="_blank" class="btn btn-amber">Download CV</a>
       <a href="mailto:rs4761@columbia.edu" class="btn btn-ghost">Contact Me</a>
     </div>
   </div>
 
   <div class="hero-right">
-    <div class="hero-photo-frame">
+    <div class="hero-photo-wrap">
       <div class="hero-photo">
-        <img src="photo.jpeg" alt="Reneth Raj Simon">
-        <div class="photo-corner tl"></div><div class="photo-corner tr"></div>
-        <div class="photo-corner bl"></div><div class="photo-corner br"></div>
-        <p class="photo-hint">📸 Add photo.jpg<br>here</p>
+        <!-- PHOTO IS LIVE — save your image as photo.jpg in the same folder -->
+        <img src="photo.jpg" alt="Reneth Raj Simon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="photo-placeholder" style="display:none">Save photo.jpg here</div>
       </div>
     </div>
     <div class="hero-stats">
@@ -273,56 +311,108 @@ footer{position:relative;z-index:1;padding:56px 60px;background:var(--bg);border
         <div class="hstat-num">8.3</div>
         <div class="hstat-sub">Manipal GPA<br>(B.Tech, /10)</div>
       </div>
-      <div class="hstat">
-        <div class="hstat-num">2</div>
-        <div class="hstat-sub">Publications<br>Pub. / Review</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-num">10K</div>
-        <div class="hstat-sub">Festival<br>Attendees Led</div>
-      </div>
     </div>
   </div>
   <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
+<!-- ── EDUCATION ── -->
+<section id="education">
   <div class="sec-eyebrow">01</div>
+  <h2 class="sec-title">Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-logo">
+        <!-- Save columbia_logo.jpeg in same folder as index.html -->
+        <img src="columbia_logo.jpeg" alt="Columbia University" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="edu-logo-placeholder" style="display:none">Columbia University</div>
+      </div>
+      <div class="edu-school">Columbia University · New York, NY</div>
+      <div class="edu-degree">Master of Science in Computer Science</div>
+      <div class="edu-meta">September 2025 – December 2026</div>
+      <span class="edu-gpa">GPA: 3.83 / 4.0</span>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-logo">
+        <!-- Save muj_logo.jpeg in same folder as index.html -->
+        <img src="muj_logo.jpeg" alt="Manipal University Jaipur" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="edu-logo-placeholder" style="display:none">Manipal University Jaipur</div>
+      </div>
+      <div class="edu-school">Manipal University Jaipur · Jaipur, India</div>
+      <div class="edu-degree">B.Tech in Computer Science Engineering — AI &amp; ML Specialization (Hons.)</div>
+      <div class="edu-meta">September 2021 – June 2025</div>
+      <span class="edu-gpa">GPA: 8.3 / 10.0</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── RECRUITER MESSAGE ── -->
+<section id="recruiter" style="background:var(--navy);padding:72px 60px">
+  <div class="sec-eyebrow" style="color:rgba(255,255,255,.35)">For Recruiters &amp; Collaborators</div>
+  <h2 class="sec-title" style="color:#fff;margin-bottom:36px">Message to Recruiters</h2>
+  <div class="recruiter-inner">
+    <div style="grid-column:1/-1;max-width:780px">
+      <p class="rm-body">
+        Mark Twain once wrote that the two most important days in your life are the day you are born and the day you find out why. I think about that a lot. For most of my life I have been drawn equally to the logic of machines and the emotion of storytelling, but it took sitting with real problems, a century-old injustice waiting to be resolved and a disease that goes undetected for years in the people it affects, to understand what I actually want to build with that combination.
+      </p>
+      <p class="rm-body">
+        Steve Jobs told a graduating class to stay hungry and stay foolish. I try to hold both. The hunger shows up in the work: a <strong>3.83 GPA at Columbia</strong>, published research in medical imaging, hands-on engineering across the full ML stack from data pipelines to deployed models, and a current research role where the output genuinely matters to real people. The foolishness, I hope, shows up in the willingness to ask bigger questions than the immediate task requires, and to care about things that do not fit neatly on a benchmark.
+      </p>
+      <p class="rm-body">
+        What I hope comes through in this portfolio is that the work is intentional. At Columbia's GILM Lab, I am not just running models. I am working on a project with real stakes. At Manipal, I did not just publish. I worked alongside surgeons to understand a problem before I tried to solve it. I am comfortable moving between research notebooks and production codebases, between deep theory and practical deployment.
+      </p>
+      <p class="rm-body">
+        I am actively looking for roles in AI research, ML engineering, or applied AI. I would be grateful for the opportunity to talk. There is no pressure and no pitch. Just a conversation.
+      </p>
+      <div class="rm-sign">Reneth Raj Simon &nbsp;&middot;&nbsp; rs4761@columbia.edu</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="sec-eyebrow">02</div>
   <h2 class="sec-title">About</h2>
   <div class="about-grid">
     <div>
       <div class="about-text">
-        <p>I am a Computer Science graduate student at <strong>Columbia University</strong> (GPA 3.83) specializing in artificial intelligence and machine learning. My research sits at the intersection of deep learning, computer vision, and multimodal systems — with applications ranging from forensic document analysis to medical imaging diagnostics.</p>
-        <p>At Columbia's Graphics Imaging and Light Measurement Lab, I am developing deep learning pipelines to analyze forensic evidence from the <strong>1921 Tulsa Race Massacre Investigation</strong> — one of the most significant unsolved cases in American history. Prior to Columbia, I published research on <strong>AI-based diagnosis of Charcot neuroarthropathy</strong> from X-ray imagery, working directly with orthopaedic surgeons.</p>
-        <p>Beyond research, I have hands-on engineering experience building production-grade AI systems — video analysis pipelines, RAG-powered recommendation engines, and computer vision applications for ecological monitoring. I am also a filmmaker and theatre director, having led <strong>Cinefilia</strong>, Manipal University's premier cultural club, to national recognition.</p>
+        <p>
+          I am a graduate researcher and engineer at <strong>Columbia University</strong>, where I am pursuing a Master of Science in Computer Science with a focus on artificial intelligence and deep learning. My work sits at the intersection of research and engineering. I design and build systems that are not only technically rigorous but genuinely useful in the world.
+        </p>
+        <p>
+          At Columbia's <strong>Graphics Imaging and Light Measurement Lab</strong>, I am developing multimodal deep learning pipelines and working on unifying multimodal embedding spaces to enable joint reasoning across documents, photographs, and geometric data. This research supports the <strong>1921 Tulsa Race Massacre Death Investigation</strong>, one of the most consequential unsolved cases in American history. The work requires reasoning across modalities, collaborating with historians and legal researchers, and building systems that are both accurate and interpretable under real-world conditions.
+        </p>
+        <p>
+          Prior to Columbia, I conducted research on <strong>AI-based detection and classification of Charcot neuroarthropathy</strong> from foot X-rays, a condition that is frequently misdiagnosed. Working directly with orthopaedic surgeons, I built a multi-stage diagnostic pipeline combining segmentation, attention-enhanced classification, and deep supervision. That work resulted in a <strong>peer-reviewed publication</strong> in the Indian Journal of Orthopaedics and a second paper currently under review at Multimedia Tools and Applications.
+        </p>
+        <p>
+          Beyond research, I have engineering experience that spans video analysis pipelines at YesYem LLC, ecological monitoring at Airis4D, and enterprise chatbot development at Gadgeon Systems. I am comfortable moving between research notebooks and production codebases, between PyTorch and FastAPI, between theory and deployment.
+        </p>
+        <p>
+          I am also a filmmaker and theatre director. As Vice President of <strong>Cinefilia</strong>, Manipal University's premier cultural club, I organised nationwide events attended by up to 10,000 people. That experience sharpened skills that no ML course teaches: how to lead teams under pressure, communicate ideas to non-technical audiences, and build things that make people feel something.
+        </p>
       </div>
       <div class="about-contact">
-        <div class="contact-item"><span class="key">Phone</span><span class="val">(914) 438-0034</span></div>
+        <div class="contact-item"><span class="key">Phone</span><span class="val">+1 (914) 438-0034</span></div>
         <div class="contact-item"><span class="key">Email</span><a href="mailto:rs4761@columbia.edu" class="val">rs4761@columbia.edu</a></div>
-        <div class="contact-item"><span class="key">Alt</span><a href="mailto:renethraj@gmail.com" class="val">renethraj@gmail.com</a></div>
-        <div class="contact-item"><span class="key">Mobile</span><span class="val">+91 89217 44206</span></div>
-        <div class="contact-item"><span class="key">Address</span><span class="val">Simons, RS Lane, KP Vallon Road, Kadavanthra, Kerala, India – 682020</span></div>
-        <div class="contact-item"><span class="key">LinkedIn</span><a href="https://www.linkedin.com/in/reneth-raj-simon" target="_blank" class="val">linkedin.com/in/reneth-raj-simon ↗</a></div>
-      </div>
-    </div>
-    <div class="about-right">
-      <div class="about-photo">
-        <!-- duplicate photo slot for about section if needed -->
-        <p class="photo-hint" style="font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center;padding:16px;line-height:2">Photo<br>(same as hero)</p>
+        <div class="contact-item"><span class="key">Alt Email</span><a href="mailto:renethraj@gmail.com" class="val">renethraj@gmail.com</a></div>
+        <div class="contact-item"><span class="key">Address</span><span class="val">521 West 112th Street, Apt. 53, Manhattan, New York, NY, USA</span></div>
+        <div class="contact-item"><span class="key">LinkedIn</span><a href="https://www.linkedin.com/in/reneth-raj-simon-855153217/" target="_blank" class="val">linkedin.com/in/reneth-raj-simon</a></div>
+        <div class="contact-item"><span class="key">GitHub</span><a href="https://github.com/renethsimon13" target="_blank" class="val">github.com/renethsimon13</a></div>
+        <div class="contact-item"><span class="key">CV</span><a href="https://renethsimon13.github.io/Reneth-Raj-Simon---CV/" target="_blank" class="val">View Full CV Online</a></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- ── EXPERIENCE ── -->
 <section id="experience">
-  <div class="sec-eyebrow">02</div>
+  <div class="sec-eyebrow">03</div>
   <h2 class="sec-title">Professional Experience</h2>
   <div class="exp-entries">
     <div class="exp-card reveal">
       <div class="exp-header"><span class="exp-role">AI Developer Intern</span><span class="exp-period">Jul 2024 – Sep 2024</span></div>
-      <div class="exp-org">YesYem LLC — Seattle, WA (Remote)</div>
+      <div class="exp-org">YesYem LLC, Seattle, WA (Remote)</div>
       <ul class="exp-bullets">
         <li>Built scalable FastAPI pipelines for short-form video ingestion, frame extraction, and visual feature encoding using computer vision models, combined with LLM-based semantic analysis and LDA-driven keyword clustering.</li>
         <li>Designed and optimized a personalized news feed recommendation system leveraging vector embeddings, retrieval-augmented generation (RAG), topic modelling, and Pinecone vector indexing to improve content relevance and user engagement.</li>
@@ -330,7 +420,7 @@ footer{position:relative;z-index:1;padding:56px 60px;background:var(--bg);border
     </div>
     <div class="exp-card reveal">
       <div class="exp-header"><span class="exp-role">Applied AI Intern</span><span class="exp-period">Jun 2024 – Jul 2024</span></div>
-      <div class="exp-org">Airis4D — Pathanamthitta, India</div>
+      <div class="exp-org">Airis4D, Pathanamthitta, India</div>
       <ul class="exp-bullets">
         <li>Developed a YOLOv8 instance segmentation pipeline to analyze 174,000 sq. ft. of aerial imagery, automating plant and tree population monitoring for a community-based bio-science research initiative.</li>
         <li>Identified a potential 36% increase in green coverage through segmentation-based ecological assessment, contributing to data-driven sustainability research.</li>
@@ -338,7 +428,7 @@ footer{position:relative;z-index:1;padding:56px 60px;background:var(--bg);border
     </div>
     <div class="exp-card reveal">
       <div class="exp-header"><span class="exp-role">Analytics Team Intern</span><span class="exp-period">Jun 2023 – Jul 2023</span></div>
-      <div class="exp-org">Gadgeon Smart Systems Pvt. Ltd — Kochi, India</div>
+      <div class="exp-org">Gadgeon Smart Systems Pvt. Ltd, Kochi, India</div>
       <ul class="exp-bullets">
         <li>Designed a knowledge-based chatbot achieving 94% accuracy using GPT4ALL Snoozy and LangChain, implementing a RAG pipeline with cosine similarity search for context-aware, structured responses.</li>
         <li>Constructed a knowledge base from 50+ data sources using sentence-transformer embeddings and vector indexing via ChromaDB.</li>
@@ -355,85 +445,88 @@ footer{position:relative;z-index:1;padding:56px 60px;background:var(--bg);border
   </div>
 </section>
 
-<!-- RESEARCH -->
+<!-- ── RESEARCH ── -->
 <section id="research">
-  <div class="sec-eyebrow">03</div>
+  <div class="sec-eyebrow">04</div>
   <h2 class="sec-title">Research Experience</h2>
   <div class="research-grid">
     <div class="research-card reveal">
       <div class="research-tag">Columbia University · Graphics Imaging &amp; Light Measurement Lab</div>
       <div class="research-title">AI for Multimodal Data &amp; Document Analysis — Tulsa Race Massacre Death Investigation</div>
-      <div class="research-body">Developing deep learning algorithms for multimodal analysis of forensic data — documents, photographs, and geometry — in high-dimensional embedding spaces. Designing and implementing a reconstruction pipeline that leverages multimodal embeddings to recover and enhance damaged historical evidence, while collaborating with researchers exploring graph neural network-based approaches to information retrieval.</div>
+      <div class="research-body">Developing multimodal deep learning pipelines and working on unifying multimodal embedding spaces to enable joint reasoning across forensic documents, photographs, and geometric data. This research supports the 1921 Tulsa Race Massacre Death Investigation. Work includes designing reconstruction pipelines that leverage unified multimodal embeddings to recover and enhance damaged historical evidence, in collaboration with researchers exploring graph neural network approaches to information retrieval.</div>
       <span class="research-period">September 2025 – Present</span>
     </div>
     <div class="research-card reveal">
       <div class="research-tag">Manipal University Jaipur — Research Assistant</div>
       <div class="research-title">AI-Enabled Diagnostic X-Ray Analysis for Charcot Neuroarthropathy</div>
-      <div class="research-body">Developed a multi-stage diagnostic pipeline analyzing Charcot neuroarthropathy patterns across AP and Lateral X-rays. Integrated DeepLabV3+ for segmentation with EfficientNet-B3 enhanced by ECA attention for multi-class classification. Incorporated ConvLSTM bottlenecks, Attention U-Net encoding, and deep supervision to preserve anatomical boundaries. Curated an IRB-approved annotated dataset in collaboration with orthopaedic surgeons.</div>
+      <div class="research-body">Developed a multi-stage diagnostic pipeline analyzing Charcot neuroarthropathy patterns across AP and Lateral X-rays. Integrated DeepLabV3+ for segmentation with EfficientNet-B3 enhanced by ECA attention for multi-class classification. Incorporated ConvLSTM bottlenecks, Attention U-Net encoding, and deep supervision. Curated an IRB-approved annotated dataset in collaboration with orthopaedic surgeons.</div>
       <span class="research-period">January 2025 – May 2025</span>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- ── PROJECTS ── -->
 <section id="projects">
-  <div class="sec-eyebrow">04</div>
+  <div class="sec-eyebrow">05</div>
   <h2 class="sec-title">Selected Projects</h2>
   <div class="projects-grid">
     <div class="project-card reveal">
       <div class="project-number">Project 01</div>
       <div class="project-title">Multimodal Chain-of-Thought Science QA</div>
-      <div class="project-desc">Neuro-symbolic pipeline integrating Microsoft GIT and Qwen 2.5 (1.5B) with LoRA/QLoRA for efficient consumer-hardware training. Implements Chain-of-Thought reasoning for complex multi-hop scientific question answering.</div>
+      <div class="project-desc">Neuro-symbolic pipeline integrating Microsoft GIT and Qwen 2.5 (1.5B) with LoRA/QLoRA for consumer-hardware training. Implements Chain-of-Thought reasoning for multi-hop scientific question answering.</div>
       <div class="project-stack"><span class="stack-tag">Qwen 2.5</span><span class="stack-tag">LoRA/QLoRA</span><span class="stack-tag">CoT Reasoning</span><span class="stack-tag">MS GIT</span></div>
     </div>
     <div class="project-card reveal">
       <div class="project-number">Project 02</div>
       <div class="project-title">Stable Diffusion Text-to-Image Pipeline</div>
-      <div class="project-desc">1.3B+ parameter text-to-image pipeline built from scratch, featuring a UNet denoising backbone, CLIP text embeddings, and AutoencoderKL for high-fidelity image synthesis from natural language prompts.</div>
+      <div class="project-desc">1.3B+ parameter pipeline built from scratch — UNet denoising backbone, CLIP text embeddings, and AutoencoderKL for high-fidelity image synthesis from natural language prompts.</div>
       <div class="project-stack"><span class="stack-tag">Stable Diffusion</span><span class="stack-tag">CLIP</span><span class="stack-tag">UNet</span><span class="stack-tag">VAE</span></div>
     </div>
     <div class="project-card reveal">
       <div class="project-number">Project 03</div>
       <div class="project-title">Transformer-Based Multilingual Text Classifier</div>
-      <div class="project-desc">Multilingual classifier using DistilBERT embeddings, capsule networks, and attention pooling with margin-loss optimization. Achieved 94% accuracy across English, Hindi, German, and French.</div>
+      <div class="project-desc">DistilBERT embeddings with capsule networks and attention pooling, margin-loss optimization. 94% accuracy across English, Hindi, German, and French.</div>
       <div class="project-stack"><span class="stack-tag">DistilBERT</span><span class="stack-tag">Capsule Networks</span><span class="stack-tag">Multilingual NLP</span></div>
     </div>
     <div class="project-card reveal">
       <div class="project-number">Project 04</div>
       <div class="project-title">ReelsAI — Video Analysis Pipeline</div>
-      <div class="project-desc">End-to-end FastAPI system for video ingestion, frame extraction, and CV-based feature encoding. Applied LLMs for semantic grouping and NLP clustering across short-form video content at scale.</div>
+      <div class="project-desc">End-to-end FastAPI system for video ingestion, frame extraction, and CV-based feature encoding. LLM semantic grouping and NLP clustering across short-form content at scale.</div>
       <div class="project-stack"><span class="stack-tag">FastAPI</span><span class="stack-tag">Computer Vision</span><span class="stack-tag">LLM</span><span class="stack-tag">LDA</span></div>
     </div>
     <div class="project-card reveal">
       <div class="project-number">Project 05</div>
       <div class="project-title">YemNews — Personalized News Recommendation Engine</div>
-      <div class="project-desc">RAG-powered news recommendation system using vector embeddings, topic modeling, and Pinecone indexing. Integrated Uvicorn and Instaloader for content ingestion and NLP-driven personalization.</div>
+      <div class="project-desc">RAG-powered recommendation system with vector embeddings, topic modeling, and Pinecone indexing. NLP-driven personalization via Uvicorn and Instaloader integration.</div>
       <div class="project-stack"><span class="stack-tag">RAG</span><span class="stack-tag">Pinecone</span><span class="stack-tag">Vector Search</span><span class="stack-tag">NLP</span></div>
     </div>
     <div class="project-card reveal">
       <div class="project-number">Project 06</div>
       <div class="project-title">Aerial Greenery Monitoring System</div>
-      <div class="project-desc">YOLOv8 instance segmentation pipeline analyzing 174,000 sq. ft. of aerial imagery to automate plant and tree monitoring. Segmentation-based analysis identified a potential 36% increase in green coverage.</div>
+      <div class="project-desc">YOLOv8 instance segmentation over 174,000 sq. ft. of aerial imagery. Segmentation-based analysis identified a potential 36% increase in green coverage for sustainability research.</div>
       <div class="project-stack"><span class="stack-tag">YOLOv8</span><span class="stack-tag">Instance Segmentation</span><span class="stack-tag">Aerial Imagery</span></div>
     </div>
   </div>
 </section>
 
-<!-- PUBLICATIONS -->
+<!-- ── PUBLICATIONS ── -->
 <section id="publications">
-  <div class="sec-eyebrow">05</div>
+  <div class="sec-eyebrow">06</div>
   <h2 class="sec-title">Publications</h2>
   <div class="pub-list">
-    <div class="pub-card reveal">
+    <!-- Entire card is a link to the DOI -->
+    <a class="pub-card reveal" href="https://doi.org/10.1007/s43465-025-01664-3" target="_blank">
       <div class="pub-idx">01</div>
       <div>
         <div class="pub-title">Charcot Neuroarthropathy: Identification and Classification using Artificial Intelligence</div>
         <div class="pub-authors">Reneth Raj Simon, Inderjit Singh, Ani Susan Abraham, Pratik Vishavadia, Rajesh Simon</div>
-        <div class="pub-venue">Indian Journal of Orthopaedics &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; <a href="https://doi.org/10.1007/s43465-025-01664-3" target="_blank">DOI: 10.1007/s43465-025-01664-3 ↗</a></div>
+        <div class="pub-venue">Indian Journal of Orthopaedics &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; DOI: 10.1007/s43465-025-01664-3</div>
+        <!-- Save journal_photo.jpeg in same folder — this will show the journal cover/screenshot -->
+        <img src="journal_photo.jpeg" alt="Journal cover" class="pub-journal-photo" onerror="this.style.display='none'">
       </div>
       <div class="pub-status published">Published</div>
-    </div>
-    <div class="pub-card reveal">
+    </a>
+    <a class="pub-card reveal" href="#publications" style="cursor:default">
       <div class="pub-idx">02</div>
       <div>
         <div class="pub-title">A Deep Learning Approach for Classification and Localisation of Charcot Neuroarthropathy in Foot Radiographs</div>
@@ -441,64 +534,77 @@ footer{position:relative;z-index:1;padding:56px 60px;background:var(--bg);border
         <div class="pub-venue">Multimedia Tools and Applications &nbsp;·&nbsp; Springer</div>
       </div>
       <div class="pub-status review">Under Review</div>
-    </div>
+    </a>
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- ── SKILLS ── -->
 <section id="skills">
-  <div class="sec-eyebrow">06</div>
+  <div class="sec-eyebrow">07</div>
   <h2 class="sec-title">Skills</h2>
   <div class="skills-layout">
     <div class="reveal">
       <div class="skill-group-head">Languages</div>
-      <div class="skill-row"><span class="skill-name">Python</span><div class="skill-track"><div class="skill-fill" style="width:95%"></div></div></div>
-      <div class="skill-row"><span class="skill-name">SQL / MySQL</span><div class="skill-track"><div class="skill-fill" style="width:72%"></div></div></div>
-      <div class="skill-row"><span class="skill-name">C Programming</span><div class="skill-track"><div class="skill-fill" style="width:62%"></div></div></div>
+      <div class="skill-tags">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">SQL / MySQL</span>
+        <span class="skill-pill">C Programming</span>
+      </div>
     </div>
     <div class="reveal">
       <div class="skill-group-head">Frameworks &amp; Libraries</div>
-      <div class="skill-row"><span class="skill-name">PyTorch</span><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div></div>
-      <div class="skill-row"><span class="skill-name">TensorFlow / Keras</span><div class="skill-track"><div class="skill-fill" style="width:84%"></div></div></div>
-      <div class="skill-row"><span class="skill-name">LangChain</span><div class="skill-track"><div class="skill-fill" style="width:82%"></div></div></div>
-      <div class="skill-row"><span class="skill-name">FastAPI</span><div class="skill-track"><div class="skill-fill" style="width:78%"></div></div></div>
-      <div class="skill-row"><span class="skill-name">Scikit-Learn</span><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+      <div class="skill-tags">
+        <span class="skill-pill">PyTorch</span>
+        <span class="skill-pill">TensorFlow</span>
+        <span class="skill-pill">Keras</span>
+        <span class="skill-pill">LangChain</span>
+        <span class="skill-pill">FastAPI</span>
+        <span class="skill-pill">Scikit-Learn</span>
+        <span class="skill-pill">Pandas</span>
+        <span class="skill-pill">NumPy</span>
+        <span class="skill-pill">Matplotlib</span>
+        <span class="skill-pill">Seaborn</span>
+      </div>
     </div>
     <div class="reveal">
       <div class="skill-group-head">Domains</div>
-      <div class="skill-row"><span class="skill-name">Machine Learning</span><div class="skill-track"><div class="skill-fill" style="width:92%"></div></div></div>
-      <div class="skill-row"><span class="skill-name">Computer Vision</span><div class="skill-track"><div class="skill-fill" style="width:88%"></div></div></div>
-      <div class="skill-row"><span class="skill-name">NLP / LLMs</span><div class="skill-track"><div class="skill-fill" style="width:86%"></div></div></div>
-      <div class="skill-row"><span class="skill-name">RAG Pipelines</span><div class="skill-track"><div class="skill-fill" style="width:84%"></div></div></div>
-      <div class="skill-row"><span class="skill-name">Multimodal AI</span><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
+      <div class="skill-tags">
+        <span class="skill-pill">Machine Learning</span>
+        <span class="skill-pill">Deep Learning</span>
+        <span class="skill-pill">Computer Vision</span>
+        <span class="skill-pill">NLP / LLMs</span>
+        <span class="skill-pill">RAG Pipelines</span>
+        <span class="skill-pill">Multimodal AI</span>
+        <span class="skill-pill">Medical Imaging</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- EDUCATION -->
-<section id="education">
-  <div class="sec-eyebrow">07</div>
-  <h2 class="sec-title">Education</h2>
-  <div class="edu-grid">
-    <div class="edu-card reveal">
-      <div class="edu-glyph">MS</div>
-      <div class="edu-school">Columbia University · New York, NY</div>
-      <div class="edu-degree">Master of Science in Computer Science</div>
-      <div class="edu-meta">
-        August 2025 – December 2026<br>
-        Relevant coursework: Machine Learning, Advanced Spoken Language Processing, Algorithms
-      </div>
-      <span class="edu-gpa">GPA: 3.83 / 4.0</span>
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="sec-eyebrow">08</div>
+  <h2 class="sec-title">Contact</h2>
+  <div class="contact-grid">
+    <div class="contact-info-list">
+      <div class="ci-row"><span class="ci-label">Phone</span><span class="ci-val">+1 (914) 438-0034</span></div>
+      <div class="ci-row"><span class="ci-label">Email</span><span class="ci-val"><a href="mailto:rs4761@columbia.edu">rs4761@columbia.edu</a></span></div>
+      <div class="ci-row"><span class="ci-label">Alt Email</span><span class="ci-val"><a href="mailto:renethraj@gmail.com">renethraj@gmail.com</a></span></div>
+      <div class="ci-row"><span class="ci-label">Address</span><span class="ci-val">521 West 112th Street, Apt. 53,<br>Manhattan, New York, NY, USA</span></div>
+      <div class="ci-row"><span class="ci-label">LinkedIn</span><span class="ci-val"><a href="https://www.linkedin.com/in/reneth-raj-simon-855153217/" target="_blank">linkedin.com/in/reneth-raj-simon</a></span></div>
+      <div class="ci-row"><span class="ci-label">GitHub</span><span class="ci-val"><a href="https://github.com/renethsimon13" target="_blank">github.com/renethsimon13</a></span></div>
+      <div class="ci-row"><span class="ci-label">CV</span><span class="ci-val"><a href="https://renethsimon13.github.io/Reneth-Raj-Simon---CV/" target="_blank">View Full CV Online</a></span></div>
     </div>
-    <div class="edu-card reveal">
-      <div class="edu-glyph">BT</div>
-      <div class="edu-school">Manipal University Jaipur · Jaipur, India</div>
-      <div class="edu-degree">B.Tech in Computer Science — AI &amp; ML Specialization (Honours)</div>
-      <div class="edu-meta">
-        June 2021 – June 2025<br>
-        Specialization in Artificial Intelligence &amp; Machine Learning
+    <div>
+      <div class="contact-cta-box">
+        <div class="cta-headline">Let's build something that matters.</div>
+        <p class="cta-body">Whether you are looking for a research collaborator, an ML engineering hire, or simply want to exchange ideas, I am always open to a conversation.</p>
+        <div class="cta-links">
+          <a href="mailto:rs4761@columbia.edu" class="cta-link primary">Send an Email</a>
+          <a href="https://www.linkedin.com/in/reneth-raj-simon-855153217/" target="_blank" class="cta-link secondary">Connect on LinkedIn</a>
+          <a href="https://renethsimon13.github.io/Reneth-Raj-Simon---CV/" target="_blank" class="cta-link secondary">View Full CV</a>
+        </div>
       </div>
-      <span class="edu-gpa">GPA: 8.3 / 10.0</span>
     </div>
   </div>
 </section>
@@ -508,15 +614,15 @@ footer{position:relative;z-index:1;padding:56px 60px;background:var(--bg);border
 <footer>
   <div>
     <span class="footer-name">Reneth Raj Simon</span>
-    <span class="footer-tagline">AI Researcher &nbsp;·&nbsp; ML Engineer &nbsp;·&nbsp; Columbia University</span>
+    <span class="footer-tagline">AI Researcher &nbsp;&middot;&nbsp; ML Engineer &nbsp;&middot;&nbsp; Columbia University</span>
   </div>
-  <div class="footer-center">© 2026 · rs4761@columbia.edu</div>
+  <div class="footer-center">© 2026</div>
   <ul class="footer-right">
-    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="mailto:rs4761@columbia.edu">Contact</a></li>
-    <li><a href="https://www.linkedin.com/in/reneth-raj-simon" target="_blank">LinkedIn ↗</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://github.com/renethsimon13" target="_blank">GitHub ↗</a></li>
   </ul>
 </footer>
 
@@ -527,30 +633,38 @@ let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
 (function a(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a)})();
 
-// Neural canvas
+// Neural canvas — light mode, subtle navy nodes
 const canvas=document.getElementById('neural-canvas'),ctx=canvas.getContext('2d');
 let W,H;
 const nodes=[];
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
 resize();window.addEventListener('resize',resize);
-for(let i=0;i<60;i++)nodes.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:.7+Math.random()*1.2});
+for(let i=0;i<55;i++)nodes.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:.7+Math.random()*1.2});
 function draw(){
   ctx.clearRect(0,0,W,H);
   nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1});
   for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
     const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);
-    if(d<150){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=`rgba(212,145,58,${.09*(1-d/150)})`;ctx.lineWidth=.5;ctx.stroke()}
+    if(d<145){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=`rgba(26,35,64,${.07*(1-d/145)})`;ctx.lineWidth=.6;ctx.stroke()}
   }
-  nodes.forEach(n=>{ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fillStyle='rgba(212,145,58,.4)';ctx.fill()});
+  nodes.forEach(n=>{ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fillStyle='rgba(26,35,64,.18)';ctx.fill()});
   requestAnimationFrame(draw);
 }
 draw();
 
-// Scroll reveal
-document.querySelectorAll('.reveal').forEach(el=>{
-  new IntersectionObserver(([e])=>{if(e.isIntersecting)e.target.classList.add('visible')},{threshold:.1}).observe(el);
-});
+// Scroll reveal — make all .reveal elements visible immediately on load too
+function revealAll(){
+  document.querySelectorAll('.reveal').forEach(el=>{
+    new IntersectionObserver(([e],obs)=>{
+      if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+    },{threshold:0.05,rootMargin:'0px 0px -40px 0px'}).observe(el);
+  });
+}
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',revealAll);
+}else{
+  revealAll();
+}
 </script>
 </body>
-
 </html>
