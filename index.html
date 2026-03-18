@@ -3,29 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reneth Raj Simon — Portfolio</title>
+<title>Reneth Raj Simon — AI/ML Researcher</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
-/* ── PSYCHOLOGY OF COLOR: Warm off-white base (trust, openness), 
-   slate-navy accents (credibility, intelligence), 
-   amber gold (warmth, creativity), teal (innovation, skill).
-   High contrast text, nothing "too dark" — feels approachable + capable. ── */
 :root {
-  --bg:      #f4f6f9;
-  --bg2:     #eef1f6;
-  --bg3:     #ffffff;
-  --surface: #e8ecf3;
-  --border:  rgba(44,62,100,0.10);
-  --border2: rgba(44,62,100,0.18);
-  --ink:     #1a2340;
-  --ink2:    #2c3e64;
-  --muted:   #4a5470;
-  --amber:   #c47f2a;
-  --amber-bg:rgba(196,127,42,0.08);
-  --teal:    #1a7a74;
-  --teal-bg: rgba(26,122,116,0.08);
-  --navy:    #1a2340;
+  --bg:#f4f6f9;--bg2:#eef1f6;--bg3:#ffffff;--surface:#e8ecf3;
+  --border:rgba(44,62,100,0.10);--border2:rgba(44,62,100,0.18);
+  --ink:#1a2340;--ink2:#2c3e64;--muted:#4a5470;
+  --amber:#c47f2a;--amber-bg:rgba(196,127,42,0.08);
+  --teal:#1a7a74;--teal-bg:rgba(26,122,116,0.08);--navy:#1a2340;
   --font-serif:'Libre Baskerville',Georgia,serif;
   --font-sans:'IBM Plex Sans',sans-serif;
   --font-mono:'IBM Plex Mono',monospace;
@@ -33,26 +20,17 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-weight:400;overflow-x:hidden;cursor:none;line-height:1.6}
-
-/* cursor */
 .cursor{position:fixed;width:9px;height:9px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%)}
 .cursor-ring{position:fixed;width:30px;height:30px;border:1.5px solid rgba(196,127,42,.45);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s}
-
-/* neural bg — subtle, light */
 #neural-canvas{position:fixed;inset:0;z-index:0;opacity:.12}
-
-/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:18px 60px;background:rgba(244,246,249,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border2)}
 .nav-logo{font-family:var(--font-serif);font-size:.9rem;font-weight:700;color:var(--navy);text-decoration:none;letter-spacing:.01em}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .18s;position:relative}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .18s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1.5px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .22s}
 .nav-links a:hover{color:var(--navy)}.nav-links a:hover::after{transform:scaleX(1)}
-
-/* ── HERO ── */
 main{position:relative;z-index:1}
 #hero{min-height:100vh;display:grid;grid-template-columns:1fr 300px;align-items:start;gap:64px;padding:120px 60px 72px;position:relative}
-.hero-left{}
 .hero-label{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:20px;opacity:0;animation:up .6s .1s forwards;display:flex;align-items:center;gap:12px}
 .hero-label::before{content:'';display:block;width:28px;height:1.5px;background:var(--amber)}
 h1.hero-name{font-family:var(--font-serif);font-size:clamp(3rem,5.2vw,5.8rem);font-weight:700;line-height:.95;letter-spacing:-.025em;opacity:0;animation:up .75s .22s forwards;color:var(--navy)}
@@ -68,63 +46,46 @@ h1.hero-name .line2{display:block;font-style:italic;font-weight:400;color:var(--
 .btn-fill{background:var(--navy);color:#fff;font-weight:500}
 .btn-fill:hover{background:var(--ink2);transform:translateY(-2px);box-shadow:0 8px 22px rgba(26,35,64,.18)}
 .btn-amber{background:var(--navy);color:#fff;font-weight:500;border:1.5px solid var(--navy)}
-.btn-amber:hover{background:var(--ink2);transform:translateY(-2px);box-shadow:0 8px 22px rgba(26,35,64,.18)}
+.btn-amber:hover{background:var(--ink2);transform:translateY(-2px)}
 .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
 .btn-ghost:hover{background:var(--navy);color:#fff}
-
-/* hero photo — aligned with name, not label */
 .hero-right{opacity:0;animation:fadeIn .9s .3s forwards;display:flex;flex-direction:column;gap:14px;padding-top:52px}
 .hero-photo-wrap{position:relative;width:100%}
 .hero-photo-wrap::after{content:'';position:absolute;top:12px;left:12px;right:-12px;bottom:-12px;border:1.5px solid rgba(196,127,42,.35);z-index:0;pointer-events:none}
 .hero-photo{width:100%;aspect-ratio:3/4;background:var(--surface);border:1.5px solid var(--border2);overflow:hidden;position:relative;z-index:1;display:block}
 .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 .photo-placeholder{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center;padding:16px;line-height:2}
-/* stat pair — only 2 stats */
 .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.hstat{background:var(--bg3);border:1.5px solid var(--border);padding:16px 16px;transition:border-color .2s}
+.hstat{background:var(--bg3);border:1.5px solid var(--border);padding:16px;transition:border-color .2s}
 .hstat:hover{border-color:var(--amber)}
 .hstat-num{font-family:var(--font-serif);font-size:1.7rem;font-weight:700;color:var(--navy);line-height:1}
 .hstat-sub{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:5px;line-height:1.55}
 .scroll-hint{position:absolute;bottom:32px;left:60px;display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);opacity:0;animation:up 1s 1.2s forwards}
 .scroll-line{width:28px;height:1px;background:var(--muted)}
-
-/* ── SECTIONS ── */
 section{padding:88px 60px;position:relative;z-index:1}
 section:nth-child(even){background:var(--bg2)}
 section:nth-child(odd){background:var(--bg)}
 .sec-eyebrow{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
 h2.sec-title{font-family:var(--font-serif);font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:700;line-height:1.1;letter-spacing:-.01em;margin-bottom:48px;color:var(--navy)}
-
-/* ── RECRUITER BANNER ── */
-#recruiter{background:var(--navy);padding:64px 60px}
-#recruiter .sec-eyebrow{color:rgba(255,255,255,.4)}
-#recruiter h2.sec-title{color:#fff;margin-bottom:0}
-.recruiter-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-top:48px}
-.recruiter-quotes{}
-.quote-block{margin-bottom:28px}
-.quote-text{font-family:var(--font-serif);font-size:1.18rem;font-style:italic;color:rgba(255,255,255,.82);line-height:1.75;margin-bottom:8px}
-.quote-attr{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(196,127,42,.9)}
-.recruiter-message{}
-.rm-heading{font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:#fff;line-height:1.25;margin-bottom:18px}
-.rm-heading em{font-style:italic;color:var(--amber)}
+/* RECRUITER */
+#recruiter{background:var(--navy);padding:72px 60px}
+#recruiter .sec-eyebrow{color:rgba(255,255,255,.35)}
+#recruiter h2.sec-title{color:#fff;margin-bottom:36px}
 .rm-body{font-size:1rem;line-height:1.85;color:rgba(255,255,255,.7);margin-bottom:20px}
 .rm-body strong{color:#fff;font-weight:500}
 .rm-sign{font-family:var(--font-serif);font-size:.9rem;font-style:italic;color:rgba(255,255,255,.45);margin-top:24px}
-
-/* ── EDUCATION ── */
+/* EDUCATION */
 .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
 .edu-card{background:var(--bg3);border:1.5px solid var(--border);padding:36px;transition:border-color .22s;position:relative;overflow:hidden}
 .edu-card:hover{border-color:rgba(196,127,42,.35)}
 .edu-logo{height:44px;margin-bottom:16px;display:flex;align-items:center}
 .edu-logo img{height:100%;width:auto;object-fit:contain}
 .edu-logo-placeholder{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:6px 12px;border:1px solid var(--border2)}
-.edu-school{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.edu-school{font-family:var(--font-serif);font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:8px}
 .edu-degree{font-family:var(--font-serif);font-size:1.08rem;font-weight:700;color:var(--navy);line-height:1.35;margin-bottom:10px}
 .edu-meta{font-family:var(--font-mono);font-size:.66rem;color:var(--muted);line-height:1.8}
 .edu-gpa{display:inline-block;margin-top:10px;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.06em;color:var(--navy);background:var(--amber-bg);border:1px solid rgba(196,127,42,.3);padding:4px 10px;font-weight:500}
-
-/* ── ABOUT ── */
-.about-grid{display:grid;grid-template-columns:1fr;gap:0}
+/* ABOUT */
 .about-text p{font-size:1.02rem;line-height:1.9;color:var(--muted);margin-bottom:18px}
 .about-text p strong{color:var(--ink);font-weight:600}
 .about-contact{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:8px 40px}
@@ -132,8 +93,30 @@ h2.sec-title{font-family:var(--font-serif);font-size:clamp(1.8rem,2.8vw,2.6rem);
 .contact-item .key{color:var(--amber);letter-spacing:.08em;text-transform:uppercase;font-size:.55rem;width:60px;flex-shrink:0;padding-top:2px;font-weight:500}
 .contact-item .val{color:var(--muted);line-height:1.5}
 .contact-item a{color:var(--muted);text-decoration:none;transition:color .18s}.contact-item a:hover{color:var(--amber)}
-
-/* ── EXPERIENCE ── */
+/* RESEARCH */
+.research-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.research-card{background:var(--bg3);border:1.5px solid var(--border);padding:36px;position:relative;overflow:hidden;transition:border-color .22s}
+.research-card:hover{border-color:rgba(26,122,116,.35)}
+.research-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--teal),transparent);opacity:0;transition:opacity .28s}
+.research-card:hover::before{opacity:1}
+.research-tag{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:7px}
+.research-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0}
+.research-title{font-family:var(--font-serif);font-size:1.05rem;font-weight:700;line-height:1.38;margin-bottom:12px;color:var(--navy)}
+.research-body{font-size:.88rem;line-height:1.82;color:var(--muted)}
+.research-period{font-family:var(--font-mono);font-size:.56rem;color:var(--muted);opacity:.7;margin-top:18px;display:block}
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.project-card{background:var(--bg3);border:1.5px solid var(--border);padding:28px;transition:border-color .22s,transform .22s;display:flex;flex-direction:column}
+.project-card:hover{border-color:rgba(196,127,42,.3);transform:translateY(-3px);box-shadow:0 6px 20px rgba(26,35,64,.07)}
+.project-number{font-family:var(--font-mono);font-size:.54rem;letter-spacing:.12em;color:var(--muted);opacity:.6;margin-bottom:12px;text-transform:uppercase}
+.project-title{font-family:var(--font-serif);font-size:.97rem;font-weight:700;line-height:1.35;color:var(--navy);margin-bottom:10px}
+.project-desc{font-size:.85rem;line-height:1.75;color:var(--muted);margin-bottom:14px;flex:1}
+.project-stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px}
+.stack-tag{font-family:var(--font-mono);font-size:.53rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;background:var(--surface);border:1px solid var(--border2);color:var(--muted)}
+.project-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);text-decoration:none;border:1.5px solid var(--navy);padding:6px 14px;transition:background .18s,color .18s;margin-top:auto;align-self:flex-start}
+.project-link:hover{background:var(--navy);color:#fff}
+.project-link svg{width:12px;height:12px;fill:currentColor;flex-shrink:0}
+/* EXPERIENCE */
 .exp-entries{display:flex;flex-direction:column;gap:2px}
 .exp-card{background:var(--bg3);border:1.5px solid var(--border);padding:32px;transition:border-color .22s}
 .exp-card:hover{border-color:rgba(196,127,42,.3)}
@@ -142,32 +125,9 @@ h2.sec-title{font-family:var(--font-serif);font-size:clamp(1.8rem,2.8vw,2.6rem);
 .exp-period{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.08em;color:var(--muted);padding:4px 10px;border:1px solid var(--border2);white-space:nowrap;background:var(--surface)}
 .exp-org{font-family:var(--font-mono);font-size:.63rem;letter-spacing:.06em;color:var(--amber);margin-bottom:16px;font-weight:500}
 .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:8px}
-.exp-bullets li{font-size:.94rem;line-height:1.78;color:var(--muted);padding-left:18px;position:relative}
+.exp-bullets li{font-size:.92rem;line-height:1.78;color:var(--muted);padding-left:18px;position:relative}
 .exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--amber);font-size:.62rem;top:4px}
-
-/* ── RESEARCH ── */
-.research-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.research-card{background:var(--bg3);border:1.5px solid var(--border);padding:36px;position:relative;overflow:hidden;transition:border-color .22s}
-.research-card:hover{border-color:rgba(26,122,116,.35)}
-.research-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(to right,var(--teal),transparent);opacity:0;transition:opacity .28s}
-.research-card:hover::before{opacity:1}
-.research-tag{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;display:flex;align-items:center;gap:7px}
-.research-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0}
-.research-title{font-family:var(--font-serif);font-size:1.05rem;font-weight:700;line-height:1.38;margin-bottom:12px;color:var(--navy)}
-.research-body{font-size:.9rem;line-height:1.82;color:var(--muted)}
-.research-period{font-family:var(--font-mono);font-size:.56rem;color:var(--muted);opacity:.7;margin-top:18px;display:block}
-
-/* ── PROJECTS ── */
-.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.project-card{background:var(--bg3);border:1.5px solid var(--border);padding:28px;transition:border-color .22s,transform .22s;display:flex;flex-direction:column}
-.project-card:hover{border-color:rgba(196,127,42,.3);transform:translateY(-3px);box-shadow:0 6px 20px rgba(26,35,64,.07)}
-.project-number{font-family:var(--font-mono);font-size:.54rem;letter-spacing:.12em;color:var(--muted);opacity:.6;margin-bottom:12px;text-transform:uppercase}
-.project-title{font-family:var(--font-serif);font-size:.97rem;font-weight:700;line-height:1.35;color:var(--navy);margin-bottom:10px}
-.project-desc{font-size:.87rem;line-height:1.75;color:var(--muted);margin-bottom:16px;flex:1}
-.project-stack{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto}
-.stack-tag{font-family:var(--font-mono);font-size:.53rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;background:var(--surface);border:1px solid var(--border2);color:var(--muted)}
-
-/* ── PUBLICATIONS ── */
+/* PUBLICATIONS */
 .pub-list{display:flex;flex-direction:column;gap:2px}
 a.pub-card{background:var(--bg3);border:1.5px solid var(--border);padding:28px 32px;display:grid;grid-template-columns:44px 1fr auto;gap:20px;align-items:start;transition:border-color .22s,background .2s;text-decoration:none;cursor:pointer}
 a.pub-card:hover{border-color:rgba(196,127,42,.35);background:var(--amber-bg)}
@@ -179,15 +139,13 @@ a.pub-card:hover{border-color:rgba(196,127,42,.35);background:var(--amber-bg)}
 .pub-status{font-family:var(--font-mono);font-size:.53rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;white-space:nowrap;align-self:start}
 .pub-status.published{color:var(--teal);border:1px solid rgba(26,122,116,.3);background:var(--teal-bg)}
 .pub-status.review{color:var(--amber);border:1px solid rgba(196,127,42,.3);background:var(--amber-bg)}
-
-/* ── SKILLS ── */
+/* SKILLS */
 .skills-layout{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
 .skill-group-head{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);padding-bottom:12px;border-bottom:1.5px solid var(--border2);margin-bottom:18px;font-weight:500}
 .skill-tags{display:flex;flex-wrap:wrap;gap:8px}
 .skill-pill{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;padding:7px 14px;background:var(--bg3);border:1.5px solid var(--border2);color:var(--ink2);transition:border-color .18s,color .18s,background .18s}
 .skill-pill:hover{border-color:var(--amber);color:var(--amber);background:var(--amber-bg)}
-
-/* ── CONTACT SECTION ── */
+/* CONTACT */
 #contact{background:var(--bg2)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
 .contact-info-list{display:flex;flex-direction:column;gap:0}
@@ -205,8 +163,7 @@ a.pub-card:hover{border-color:rgba(196,127,42,.35);background:var(--amber-bg)}
 .cta-link.primary:hover{background:#b5721f}
 .cta-link.secondary{background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.2)}
 .cta-link.secondary:hover{color:#fff;border-color:rgba(255,255,255,.5)}
-
-/* ── FOOTER ── */
+/* FOOTER */
 footer{position:relative;z-index:1;padding:48px 60px;background:var(--navy);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:40px}
 .footer-name{font-family:var(--font-serif);font-size:1.2rem;font-weight:700;color:#fff;display:block;margin-bottom:4px}
 .footer-tagline{font-family:var(--font-mono);font-size:.54rem;letter-spacing:.1em;color:rgba(255,255,255,.4);text-transform:uppercase}
@@ -215,21 +172,27 @@ footer{position:relative;z-index:1;padding:48px 60px;background:var(--navy);disp
 .footer-right a{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);text-decoration:none;transition:color .18s}
 .footer-right a:hover{color:rgba(255,255,255,.9)}
 
-/* ── ANIMATIONS ── */
+/* MORE PROJECTS */
+.more-projects-toggle{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);border:1.5px solid var(--navy);background:transparent;padding:10px 24px;cursor:pointer;margin-top:24px;display:inline-flex;align-items:center;gap:8px;transition:background .18s,color .18s}
+.more-projects-toggle:hover{background:var(--navy);color:#fff}
+.more-projects-toggle svg{width:12px;height:12px;transition:transform .3s}
+.more-projects-toggle.open svg{transform:rotate(180deg)}
+.more-projects-extra{display:none;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2px}
+.more-projects-extra.visible{display:grid}
+@media(max-width:1040px){.more-projects-extra{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.more-projects-extra{grid-template-columns:1fr}}
+
 @keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
-
-/* ── RESPONSIVE ── */
 @media(max-width:1040px){
-  nav{padding:16px 22px}.nav-links{gap:16px}
+  nav{padding:16px 22px}.nav-links{gap:14px}
   #hero{grid-template-columns:1fr;padding:108px 22px 64px;gap:40px}
   .hero-right{display:grid;grid-template-columns:180px 1fr;gap:14px;align-items:start}
   .scroll-hint{left:22px}
   section{padding:72px 22px}
   #recruiter{padding:56px 22px}
-  .recruiter-inner{grid-template-columns:1fr;gap:40px}
   .research-grid,.edu-grid,.contact-grid{grid-template-columns:1fr}
   .projects-grid{grid-template-columns:1fr 1fr}
   .skills-layout{grid-template-columns:1fr 1fr}
@@ -255,9 +218,9 @@ footer{position:relative;z-index:1;padding:48px 60px;background:var(--navy);disp
   <ul class="nav-links">
     <li><a href="#education">Education</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#publications">Publications</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -265,263 +228,305 @@ footer{position:relative;z-index:1;padding:48px 60px;background:var(--navy);disp
 </nav>
 
 <main>
-
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section id="hero">
   <div class="hero-left">
-    <div class="hero-label">Columbia University &nbsp;·&nbsp; MS Computer Science</div>
-    <h1 class="hero-name">
-      Reneth
-      <span class="line2">Raj Simon</span>
-    </h1>
+    <div class="hero-label">Columbia University &nbsp;&middot;&nbsp; MS Computer Science</div>
+    <h1 class="hero-name">Reneth<span class="line2">Raj Simon</span></h1>
     <p class="hero-subtitle">Pursuing MS in Computer Science at Columbia University</p>
     <p class="hero-desc">
       <strong>AI/ML Researcher &amp; Engineer</strong> specializing in deep learning, computer vision, and natural language processing.
-      Graduate Research Assistant at Columbia's GILM Lab. Published author in medical AI.
-      Building systems that bridge rigorous research and real-world impact.
+      As a Graduate Research Assistant at Columbia's GILM Lab under <strong>Dr. Corey Toler-Franklin</strong>, I work on forensic multimodal AI for one of America's most significant unsolved historical cases.
+      Published in medical imaging and interested in roles where research and real-world impact are not in tension.
     </p>
     <div class="hero-chips">
-      <span class="chip">Deep Learning</span>
-      <span class="chip">Computer Vision</span>
-      <span class="chip">NLP / LLMs</span>
-      <span class="chip">Multimodal AI</span>
-      <span class="chip">RAG Systems</span>
+      <span class="chip">Deep Learning</span><span class="chip">Computer Vision</span>
+      <span class="chip">NLP / LLMs</span><span class="chip">Multimodal AI</span><span class="chip">RAG Systems</span>
     </div>
     <div class="hero-actions">
       <a href="#research" class="btn btn-fill">View Research</a>
       <a href="https://renethsimon13.github.io/Reneth-Raj-Simon---CV/" target="_blank" class="btn btn-amber">Download CV</a>
-      <a href="mailto:rs4761@columbia.edu" class="btn btn-ghost">Contact Me</a>
+      <a href="/cdn-cgi/l/email-protection#1062632427262150737f7c657d7279713e757465" class="btn btn-ghost">Contact Me</a>
     </div>
   </div>
-
   <div class="hero-right">
     <div class="hero-photo-wrap">
       <div class="hero-photo">
-        <!-- PHOTO IS LIVE — save your image as photo.jpg in the same folder -->
         <img src="photo.jpeg" alt="Reneth Raj Simon" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-        <div class="photo-placeholder" style="display:none">Save photo.jpg here</div>
+        <div class="photo-placeholder" style="display:none">photo.jpeg</div>
       </div>
     </div>
     <div class="hero-stats">
-      <div class="hstat">
-        <div class="hstat-num">3.83</div>
-        <div class="hstat-sub">Columbia GPA<br>(MS CS)</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-num">8.3</div>
-        <div class="hstat-sub">Manipal GPA<br>(B.Tech, /10)</div>
-      </div>
+      <div class="hstat"><div class="hstat-num">3.83</div><div class="hstat-sub">Columbia GPA<br>(MS CS)</div></div>
+      <div class="hstat"><div class="hstat-num">8.3</div><div class="hstat-sub">Manipal GPA<br>(B.Tech, /10)</div></div>
     </div>
   </div>
   <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
 </section>
 
-<!-- ── EDUCATION ── -->
+<!-- EDUCATION -->
 <section id="education">
   <div class="sec-eyebrow">01</div>
   <h2 class="sec-title">Education</h2>
   <div class="edu-grid">
     <div class="edu-card reveal">
       <div class="edu-logo">
-        <!-- Save columbia_logo.jpeg in same folder as index.html -->
         <img src="columbia_logo.jpg" alt="Columbia University" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="edu-logo-placeholder" style="display:none">Columbia University</div>
       </div>
-      <div class="edu-school">Columbia University · New York, NY</div>
+      <div class="edu-school">Columbia University &middot; New York, NY</div>
       <div class="edu-degree">Master of Science in Computer Science</div>
-      <div class="edu-meta">September 2025 – December 2026</div>
+      <div class="edu-meta">September 2025 &ndash; December 2026</div>
       <span class="edu-gpa">GPA: 3.83 / 4.0</span>
     </div>
     <div class="edu-card reveal">
       <div class="edu-logo">
-        <!-- Save muj_logo.jpeg in same folder as index.html -->
         <img src="muj_logo.png" alt="Manipal University Jaipur" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
         <div class="edu-logo-placeholder" style="display:none">Manipal University Jaipur</div>
       </div>
-      <div class="edu-school">Manipal University Jaipur · Jaipur, India</div>
-      <div class="edu-degree">B.Tech in Computer Science Engineering — AI &amp; ML Specialization (Hons.)</div>
-      <div class="edu-meta">September 2021 – June 2025</div>
+      <div class="edu-school">Manipal University Jaipur &middot; Jaipur, India</div>
+      <div class="edu-degree">B.Tech in Computer Science Engineering &mdash; AI &amp; ML Specialization (Hons.)</div>
+      <div class="edu-meta">September 2021 &ndash; June 2025</div>
       <span class="edu-gpa">GPA: 8.3 / 10.0</span>
     </div>
   </div>
 </section>
 
-<!-- ── RECRUITER MESSAGE ── -->
+<!-- RECRUITER -->
 <section id="recruiter" style="background:var(--navy);padding:72px 60px">
   <div class="sec-eyebrow" style="color:rgba(255,255,255,.35)">For Recruiters &amp; Collaborators</div>
   <h2 class="sec-title" style="color:#fff;margin-bottom:36px">Message to Recruiters</h2>
-  <div class="recruiter-inner">
-    <div style="grid-column:1/-1;max-width:780px">
-      <p class="rm-body">
-        Mark Twain once wrote that the two most important days in your life are the day you are born and the day you find out why. I think about that a lot. For most of my life I have been drawn equally to the logic of machines and the emotion of storytelling, but it took sitting with real problems, a century-old injustice waiting to be resolved and a disease that goes undetected for years in the people it affects, to understand what I actually want to build with that combination.
-      </p>
-      <p class="rm-body">
-        Steve Jobs told a graduating class to stay hungry and stay foolish. I try to hold both. The hunger shows up in the work: a <strong>3.83 GPA at Columbia</strong>, published research in medical imaging, hands-on engineering across the full ML stack from data pipelines to deployed models, and a current research role where the output genuinely matters to real people. The foolishness, I hope, shows up in the willingness to ask bigger questions than the immediate task requires, and to care about things that do not fit neatly on a benchmark.
-      </p>
-      <p class="rm-body">
-        What I hope comes through in this portfolio is that the work is intentional. At Columbia's GILM Lab, I am not just running models. I am working on a project with real stakes. At Manipal, I did not just publish. I worked alongside surgeons to understand a problem before I tried to solve it. I am comfortable moving between research notebooks and production codebases, between deep theory and practical deployment.
-      </p>
-      <p class="rm-body">
-        I am actively looking for roles in AI research, ML engineering, or applied AI. I would be grateful for the opportunity to talk. There is no pressure and no pitch. Just a conversation.
-      </p>
-      <div class="rm-sign">Reneth Raj Simon &nbsp;&middot;&nbsp; rs4761@columbia.edu</div>
-    </div>
+  <div style="max-width:780px">
+    <p class="rm-body">Mark Twain once wrote that the two most important days in your life are the day you are born and the day you find out why. I think about that a lot. For most of my life I have been drawn equally to the logic of machines and the emotion of storytelling, but it took sitting with real problems, a century-old injustice waiting to be resolved and a disease that goes undetected for years in the people it affects, to understand what I actually want to build with that combination.</p>
+    <p class="rm-body">Steve Jobs told a graduating class to stay hungry and stay foolish. I try to hold both. The hunger shows up in the work: a <strong>3.83 GPA at Columbia</strong>, published research in medical imaging, hands-on engineering across the full ML stack from data pipelines to deployed models, and a current research role where the output genuinely matters to real people. The foolishness, I hope, shows up in the willingness to ask bigger questions than the immediate task requires, and to care about things that do not fit neatly on a benchmark.</p>
+    <p class="rm-body">What I hope comes through in this portfolio is that the work is intentional. At Columbia's GILM Lab, I am not just running models. I am working on a project with real stakes. At Manipal, I did not just publish. I worked alongside surgeons to understand a problem before I tried to solve it. I am comfortable moving between research notebooks and production codebases, between deep theory and practical deployment.</p>
+    <p class="rm-body">I am actively looking for roles in AI research, ML engineering, or applied AI. I would be grateful for the opportunity to talk. There is no pressure and no pitch. Just a conversation.</p>
+    <div class="rm-sign">Reneth Raj Simon &nbsp;&middot;&nbsp; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2d0d196959493e2c1cdced7cfc0cbc38cc7c6d7">[email&#160;protected]</a></div>
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- ABOUT -->
 <section id="about">
   <div class="sec-eyebrow">02</div>
   <h2 class="sec-title">About</h2>
-  <div class="about-grid">
-    <div>
-      <div class="about-text">
-        <p>
-          I am a graduate researcher and engineer at <strong>Columbia University</strong>, where I am pursuing a Master of Science in Computer Science with a focus on artificial intelligence and deep learning. My work sits at the intersection of research and engineering. I design and build systems that are not only technically rigorous but genuinely useful in the world.
-        </p>
-        <p>
-          At Columbia's <strong>Graphics Imaging and Light Measurement Lab</strong>, I am developing multimodal deep learning pipelines and working on unifying multimodal embedding spaces to enable joint reasoning across documents, photographs, and geometric data. This research supports the <strong>1921 Tulsa Race Massacre Death Investigation</strong>, one of the most consequential unsolved cases in American history. The work requires reasoning across modalities, collaborating with historians and legal researchers, and building systems that are both accurate and interpretable under real-world conditions.
-        </p>
-        <p>
-          Prior to Columbia, I conducted research on <strong>AI-based detection and classification of Charcot neuroarthropathy</strong> from foot X-rays, a condition that is frequently misdiagnosed. Working directly with orthopaedic surgeons, I built a multi-stage diagnostic pipeline combining segmentation, attention-enhanced classification, and deep supervision. That work resulted in a <strong>peer-reviewed publication</strong> in the Indian Journal of Orthopaedics and a second paper currently under review at Multimedia Tools and Applications.
-        </p>
-        <p>
-          Beyond research, I have engineering experience that spans video analysis pipelines at YesYem LLC, ecological monitoring at Airis4D, and enterprise chatbot development at Gadgeon Systems. I am comfortable moving between research notebooks and production codebases, between PyTorch and FastAPI, between theory and deployment.
-        </p>
-        <p>
-          I am also a filmmaker and theatre director. As Vice President of <strong>Cinefilia</strong>, Manipal University's premier cultural club, I organised nationwide events attended by up to 10,000 people. That experience sharpened skills that no ML course teaches: how to lead teams under pressure, communicate ideas to non-technical audiences, and build things that make people feel something.
-        </p>
-      </div>
-      <div class="about-contact">
-        <div class="contact-item"><span class="key">Phone</span><span class="val">+1 (914) 438-0034</span></div>
-        <div class="contact-item"><span class="key">Email</span><a href="mailto:rs4761@columbia.edu" class="val">rs4761@columbia.edu</a></div>
-        <div class="contact-item"><span class="key">Alt Email</span><a href="mailto:renethraj@gmail.com" class="val">renethraj@gmail.com</a></div>
-        <div class="contact-item"><span class="key">Address</span><span class="val">521 West 112th Street, Apt. 53, Manhattan, New York, NY, USA</span></div>
-        <div class="contact-item"><span class="key">LinkedIn</span><a href="https://www.linkedin.com/in/reneth-raj-simon-855153217/" target="_blank" class="val">linkedin.com/in/reneth-raj-simon</a></div>
-        <div class="contact-item"><span class="key">GitHub</span><a href="https://github.com/renethsimon13" target="_blank" class="val">github.com/renethsimon13</a></div>
-        <div class="contact-item"><span class="key">CV</span><a href="https://renethsimon13.github.io/Reneth-Raj-Simon---CV/" target="_blank" class="val">View Full CV Online</a></div>
-      </div>
-    </div>
+  <div class="about-text">
+    <p>I am a graduate researcher and engineer at <strong>Columbia University</strong>, pursuing an MS in Computer Science with a focus on deep learning and multimodal AI. At the <strong>Graphics Imaging and Light Measurement Lab</strong>, under the supervision of <strong>Dr. Corey Toler-Franklin</strong>, I develop pipelines that unify embedding spaces across documents, photographs, texts, and graphs to support the 1921 Tulsa Race Massacre Death Investigation. Prior to Columbia, I built and published a multi-stage AI diagnostic system for Charcot neuroarthropathy from foot X-rays, working directly with orthopaedic surgeons and achieving 93.39% classification accuracy on unseen clinical data. That work is published in the Indian Journal of Orthopaedics and a second paper targeting a computer science audience is under review at Multimedia Tools and Applications.</p>
+    <p>Outside research, I have engineering experience across video analysis pipelines at YesYem LLC, RAG-powered recommendation systems, ecological monitoring with aerial computer vision under Prof. Ninaan Sajeeth at Airis4D, and enterprise chatbot development at Gadgeon Smart Systems Pvt. Ltd., Kochi. I am comfortable moving between research notebooks and production codebases. I am also a filmmaker and theatre director. As Vice President of <strong>Cinefilia</strong>, Manipal University's premier cultural club, I organised festivals attended by up to 10,000 people, an experience that sharpened how I lead teams under pressure, communicate technical ideas to non-technical audiences, and build things that make people feel something.</p>
+  </div>
+  <div class="about-contact">
+    <div class="contact-item"><span class="key">Phone</span><span class="val">+1 (914) 438-0034</span></div>
+    <div class="contact-item"><span class="key">Email</span><a href="/cdn-cgi/l/email-protection#3042430407060170535f5c455d5259511e555445" class="val"><span class="__cf_email__" data-cfemail="6311105754555223000c0f160e010a024d060716">[email&#160;protected]</span></a></div>
+    <div class="contact-item"><span class="key">Alt Email</span><a href="/cdn-cgi/l/email-protection#a5d7c0cbc0d1cdd7c4cfe5c2c8c4ccc98bc6cac8" class="val"><span class="__cf_email__" data-cfemail="dcaeb9b2b9a8b4aebdb69cbbb1bdb5b0f2bfb3b1">[email&#160;protected]</span></a></div>
+    <div class="contact-item"><span class="key">Address</span><span class="val">521 West 112th Street, Apt. 53, Manhattan, New York, NY, USA</span></div>
+    <div class="contact-item"><span class="key">LinkedIn</span><a href="https://www.linkedin.com/in/reneth-raj-simon-855153217/" target="_blank" class="val">linkedin.com/in/reneth-raj-simon</a></div>
+    <div class="contact-item"><span class="key">GitHub</span><a href="https://github.com/renethsimon13" target="_blank" class="val">github.com/renethsimon13</a></div>
+    <div class="contact-item"><span class="key">CV</span><a href="https://renethsimon13.github.io/Reneth-Raj-Simon---CV/" target="_blank" class="val">View Full CV Online</a></div>
   </div>
 </section>
 
-<!-- ── EXPERIENCE ── -->
-<section id="experience">
-  <div class="sec-eyebrow">03</div>
-  <h2 class="sec-title">Professional Experience</h2>
-  <div class="exp-entries">
-    <div class="exp-card reveal">
-      <div class="exp-header"><span class="exp-role">AI Developer Intern</span><span class="exp-period">Jul 2024 – Sep 2024</span></div>
-      <div class="exp-org">YesYem LLC, Seattle, WA (Remote)</div>
-      <ul class="exp-bullets">
-        <li>Built scalable FastAPI pipelines for short-form video ingestion, frame extraction, and visual feature encoding using computer vision models, combined with LLM-based semantic analysis and LDA-driven keyword clustering.</li>
-        <li>Designed and optimized a personalized news feed recommendation system leveraging vector embeddings, retrieval-augmented generation (RAG), topic modelling, and Pinecone vector indexing to improve content relevance and user engagement.</li>
-      </ul>
-    </div>
-    <div class="exp-card reveal">
-      <div class="exp-header"><span class="exp-role">Applied AI Intern</span><span class="exp-period">Jun 2024 – Jul 2024</span></div>
-      <div class="exp-org">Airis4D, Pathanamthitta, India</div>
-      <ul class="exp-bullets">
-        <li>Developed a YOLOv8 instance segmentation pipeline to analyze 174,000 sq. ft. of aerial imagery, automating plant and tree population monitoring for a community-based bio-science research initiative.</li>
-        <li>Identified a potential 36% increase in green coverage through segmentation-based ecological assessment, contributing to data-driven sustainability research.</li>
-      </ul>
-    </div>
-    <div class="exp-card reveal">
-      <div class="exp-header"><span class="exp-role">Analytics Team Intern</span><span class="exp-period">Jun 2023 – Jul 2023</span></div>
-      <div class="exp-org">Gadgeon Smart Systems Pvt. Ltd, Kochi, India</div>
-      <ul class="exp-bullets">
-        <li>Designed a knowledge-based chatbot achieving 94% accuracy using GPT4ALL Snoozy and LangChain, implementing a RAG pipeline with cosine similarity search for context-aware, structured responses.</li>
-        <li>Constructed a knowledge base from 50+ data sources using sentence-transformer embeddings and vector indexing via ChromaDB.</li>
-      </ul>
-    </div>
-    <div class="exp-card reveal">
-      <div class="exp-header"><span class="exp-role">Vice President</span><span class="exp-period">May 2023 – May 2024</span></div>
-      <div class="exp-org">Cinefilia – The Filmmaking &amp; Dramatics Club, Manipal University Jaipur</div>
-      <ul class="exp-bullets">
-        <li>Led Manipal University's premier cultural club to national recognition, overseeing administration, event execution, and cross-team coordination across a full academic year.</li>
-        <li>Organized nationwide theatre and filmmaking festivals drawing 8,000–10,000 attendees, managing budgets, vendor negotiations, and on-site logistics.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ── RESEARCH ── -->
+<!-- RESEARCH -->
 <section id="research">
-  <div class="sec-eyebrow">04</div>
+  <div class="sec-eyebrow">03</div>
   <h2 class="sec-title">Research Experience</h2>
   <div class="research-grid">
     <div class="research-card reveal">
-      <div class="research-tag">Columbia University · Graphics Imaging &amp; Light Measurement Lab</div>
-      <div class="research-title">AI for Multimodal Data &amp; Document Analysis — Tulsa Race Massacre Death Investigation</div>
-      <div class="research-body">Developing multimodal deep learning pipelines and working on unifying multimodal embedding spaces to enable joint reasoning across forensic documents, photographs, and geometric data. This research supports the 1921 Tulsa Race Massacre Death Investigation. Work includes designing reconstruction pipelines that leverage unified multimodal embeddings to recover and enhance damaged historical evidence, in collaboration with researchers exploring graph neural network approaches to information retrieval.</div>
-      <span class="research-period">September 2025 – Present</span>
+      <div class="research-tag">Columbia University &middot; Graphics Imaging &amp; Light Measurement Lab &middot; Supervised by Dr. Corey Toler-Franklin</div>
+      <div class="research-title">Unifying Multimodal Embedding Spaces for Forensic Evidence Recovery &mdash; 1921 Tulsa Race Massacre Investigation</div>
+      <div class="research-body">
+        <strong style="color:var(--navy);display:block;margin-bottom:7px">The Problem</strong>
+        Historical forensic evidence spans scanned documents, photographs, handwritten texts, and structured graphs, each living in a different representational space. The core challenge is aligning these into a single continuous embedding space where a damaged photograph can be cross-referenced against a document, or a missing detail in one modality inferred from another. This is technically hard because modality distributions are naturally disjoint and naively concatenating embeddings preserves no semantic alignment.
+        <br><br>
+        <strong style="color:var(--navy);display:block;margin-bottom:7px">What I Built</strong>
+        A multimodal alignment pipeline that projects three distinct embedding types — VAE, CLIP Image, and CLIP Text — into a single unified 512-dimensional space with Gaussian structure. The architecture uses frozen pre-trained encoders followed by learned projection layers, multi-head attention fusion, and a variational head producing well-regularised embeddings. Validated through cross-modal retrieval: text queries retrieve semantically matching images with cosine similarity exceeding 0.98. Trained on Flickr8k across 100 epochs, reducing modality centre distances by over 94%, demonstrating successful alignment. The unified space enables operations previously impossible — directly comparing a text embedding to an image embedding using cosine similarity.
+        <br><br>
+        <strong style="color:var(--navy);display:block;margin-bottom:7px">Technical Approach</strong>
+        Modality-specific projection networks transform each encoder output into a shared 512-dimensional space. Alignment losses including Fisher loss, centre alignment, and covariance matching enforce distributional overlap, while anti-collapse regularisation prevents variance from collapsing. An 8-head attention fusion mechanism learns content-dependent modality weighting per sample. The variational head applies reparameterisation to produce Gaussian-distributed embeddings suitable for downstream generative tasks. Loss weight tuning was critical: covariance matching at 0.001, anti-collapse at 10.0 for stable training. Cross-modal retrieval uses direct cosine similarity without additional indexing structures.
+        <br><br>
+        <em style="font-size:.8rem;color:var(--muted)">Stack: PyTorch, HuggingFace Transformers, OpenAI CLIP, Stable Diffusion VAE, Flickr8k</em>
+      </div>
+      <span class="research-period">September 2025 &ndash; Present</span>
     </div>
     <div class="research-card reveal">
-      <div class="research-tag">Manipal University Jaipur — Research Assistant</div>
+      <div class="research-tag">Manipal University Jaipur &mdash; Research Assistant</div>
       <div class="research-title">AI-Enabled Diagnostic X-Ray Analysis for Charcot Neuroarthropathy</div>
-      <div class="research-body">Developed a multi-stage diagnostic pipeline analyzing Charcot neuroarthropathy patterns across AP and Lateral X-rays. Integrated DeepLabV3+ for segmentation with EfficientNet-B3 enhanced by ECA attention for multi-class classification. Incorporated ConvLSTM bottlenecks, Attention U-Net encoding, and deep supervision. Curated an IRB-approved annotated dataset in collaboration with orthopaedic surgeons.</div>
-      <span class="research-period">January 2025 – May 2025</span>
+      <div class="research-body">
+        <strong style="color:var(--navy);display:block;margin-bottom:7px">The Problem</strong>
+        Charcot neuroarthropathy (CN) is a rare but severe complication of diabetes that leads to progressive bone and joint destruction, often resulting in amputation. Despite its severity, awareness among clinicians is limited and there is significant clinical overlap with other conditions such as osteomyelitis, making early and accurate diagnosis difficult. Access to specialist interpretation is not always available in resource-limited settings.
+        <br><br>
+        <strong style="color:var(--navy);display:block;margin-bottom:7px">What I Built</strong>
+        A multi-stage AI diagnostic pipeline trained on 234 X-rays from patients with and without CN, annotated under the supervision of a senior Foot and Ankle consultant at a tertiary care institute. The IRB-approved, annotated dataset was curated in direct collaboration with 4&ndash;5 orthopaedic surgeons; it is not publicly available but can be accessed on request. Classification accuracy: 93.39% on unseen internal test data and 93.3% on an independent external validation set of 15 X-rays. AI predictions showed 91.3% agreement with expert-assigned Brodsky classifications. Segmentation accuracy: 96.85%. Work resulted in a peer-reviewed publication in the Indian Journal of Orthopaedics (2026).
+        <br><br>
+        <strong style="color:var(--navy);display:block;margin-bottom:7px">Technical Approach</strong>
+        DeepLabV3+ for anatomical region segmentation, EfficientNet-B3 enhanced with ECA attention for multi-class Brodsky classification. ConvLSTM bottlenecks and Attention U-Net encoding preserve anatomical boundaries, while deep supervision improves lesion localisation. The pipeline processes both AP and Lateral X-ray views jointly to reflect the clinical diagnostic workflow.
+      </div>
+      <span class="research-period">January 2025 &ndash; May 2025</span>
     </div>
   </div>
 </section>
 
-<!-- ── PROJECTS ── -->
+<!-- PROJECTS -->
 <section id="projects">
-  <div class="sec-eyebrow">05</div>
+  <div class="sec-eyebrow">04</div>
   <h2 class="sec-title">Selected Projects</h2>
   <div class="projects-grid">
+
     <div class="project-card reveal">
       <div class="project-number">Project 01</div>
-      <div class="project-title">Multimodal Chain-of-Thought Science QA</div>
-      <div class="project-desc">Neuro-symbolic pipeline integrating Microsoft GIT and Qwen 2.5 (1.5B) with LoRA/QLoRA for consumer-hardware training. Implements Chain-of-Thought reasoning for multi-hop scientific question answering.</div>
-      <div class="project-stack"><span class="stack-tag">Qwen 2.5</span><span class="stack-tag">LoRA/QLoRA</span><span class="stack-tag">CoT Reasoning</span><span class="stack-tag">MS GIT</span></div>
+      <div class="project-title">Progressive VAE-Diffusion for Multimodal Embedding &amp; Image Reconstruction</div>
+      <div class="project-desc">Progressive training framework combining a custom Text VAE (trained from scratch with Gaussian KL regularisation, KL weight 0.001) with a fine-tuned Stable Diffusion 1.5 UNet. UNet fine-tunes at LR 1e-5; Text VAE at 1e-4 over 50 epochs on 4x32x32 latent representations. Batch size 128 on 48GB VRAM with cached CLIP hidden states. Goal: learn a richer VAE-structured text latent space. Validated via cross-modal retrieval with cosine similarity exceeding 0.98. Directly informs the GILM Lab forensic reconstruction pipeline.</div>
+      <div class="project-stack"><span class="stack-tag">VAE</span><span class="stack-tag">Stable Diffusion 1.5</span><span class="stack-tag">UNet</span><span class="stack-tag">CLIP</span><span class="stack-tag">PyTorch</span></div>
+      <a class="project-link" href="https://github.com/renethsimon13/progressive-vae-diffusion-for-multimodal-embedding-and-image-reconstruction" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;fill:currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> View on GitHub</a>
     </div>
     <div class="project-card reveal">
       <div class="project-number">Project 02</div>
-      <div class="project-title">Stable Diffusion Text-to-Image Pipeline</div>
-      <div class="project-desc">1.3B+ parameter pipeline built from scratch — UNet denoising backbone, CLIP text embeddings, and AutoencoderKL for high-fidelity image synthesis from natural language prompts.</div>
-      <div class="project-stack"><span class="stack-tag">Stable Diffusion</span><span class="stack-tag">CLIP</span><span class="stack-tag">UNet</span><span class="stack-tag">VAE</span></div>
+      <div class="project-title">AI-Enabled Diagnostic X-Ray Analysis for Charcot Neuroarthropathy</div>
+      <div class="project-desc">Multi-stage diagnostic pipeline trained on 234 IRB-approved X-rays curated with orthopaedic surgeons. Classification accuracy: 93.39% (internal) and 93.3% (external validation), 91.3% agreement with expert Brodsky classifications. Segmentation accuracy: 96.85%. Integrates DeepLabV3+ with EfficientNet-B3 + ECA attention and ConvLSTM bottlenecks. Led to a peer-reviewed publication in the Indian Journal of Orthopaedics (2026).</div>
+      <div class="project-stack"><span class="stack-tag">DeepLabV3+</span><span class="stack-tag">EfficientNet-B3</span><span class="stack-tag">ECA Attention</span><span class="stack-tag">Medical Imaging</span></div>
+      <a class="project-link" href="https://github.com/renethsimon13/AI-Enabled-Diagnostic-X-Ray-Analysis-for-Charcot-Neuroarthropathy." target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;fill:currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> View on GitHub</a>
     </div>
     <div class="project-card reveal">
       <div class="project-number">Project 03</div>
-      <div class="project-title">Transformer-Based Multilingual Text Classifier</div>
-      <div class="project-desc">DistilBERT embeddings with capsule networks and attention pooling, margin-loss optimization. 94% accuracy across English, Hindi, German, and French.</div>
-      <div class="project-stack"><span class="stack-tag">DistilBERT</span><span class="stack-tag">Capsule Networks</span><span class="stack-tag">Multilingual NLP</span></div>
+      <div class="project-title">Multimodal Chain-of-Thought Science QA</div>
+      <div class="project-desc">Columbia COMS4705 NLP final project (3-person team). Benchmarked on ScienceQA (6,218 train / 2,017 test). Best result: Qwen3-8B + LoRA (r=32) + BLIP: 78.0% overall accuracy in 3 hours, a +19% gain over standard prompting. Custom hybrid_v2 (LSTM + Cross-Attention + Attention Pooling, 141M params): 67.4% in 1.5 hours. Contribution: baseline model design, hybrid architecture variants, and CoT pipeline integration.</div>
+      <div class="project-stack"><span class="stack-tag">Qwen3-8B</span><span class="stack-tag">LoRA</span><span class="stack-tag">CoT</span><span class="stack-tag">BLIP</span><span class="stack-tag">ScienceQA</span></div>
+      <a class="project-link" href="https://github.com/renethsimon13/Multimodal-Chain-of-Thought-Science-QA" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;fill:currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> View on GitHub</a>
     </div>
     <div class="project-card reveal">
       <div class="project-number">Project 04</div>
-      <div class="project-title">ReelsAI — Video Analysis Pipeline</div>
-      <div class="project-desc">End-to-end FastAPI system for video ingestion, frame extraction, and CV-based feature encoding. LLM semantic grouping and NLP clustering across short-form content at scale.</div>
-      <div class="project-stack"><span class="stack-tag">FastAPI</span><span class="stack-tag">Computer Vision</span><span class="stack-tag">LLM</span><span class="stack-tag">LDA</span></div>
+      <div class="project-title">X-Lingua &mdash; Language-Agnostic Text Classification</div>
+      <div class="project-desc">Multilingual text classifier using quora-distilbert-multilingual. Trained on English, evaluated on Hindi via the model's language-agnostic embedding space with zero language-specific fine-tuning. Stratified 85/15 split, Adam optimiser, 10 epochs, batch size 16. Achieves 94% accuracy on held-out cross-lingual test data.</div>
+      <div class="project-stack"><span class="stack-tag">quora-distilbert-multilingual</span><span class="stack-tag">Cross-lingual Transfer</span><span class="stack-tag">PyTorch</span><span class="stack-tag">Sentence Transformers</span></div>
+      <a class="project-link" href="https://github.com/renethsimon13/x-lingua-language-agnostic-text-classification" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;fill:currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> View on GitHub</a>
     </div>
+  </div>
+
+  <button class="more-projects-toggle" onclick="toggleMore(this)" aria-expanded="false">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:13px;height:13px;fill:currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+    Show More Projects (9)
+  </button>
+
+  <div class="more-projects-extra" id="moreProjects">
+
     <div class="project-card reveal">
       <div class="project-number">Project 05</div>
-      <div class="project-title">YemNews — Personalized News Recommendation Engine</div>
-      <div class="project-desc">RAG-powered recommendation system with vector embeddings, topic modeling, and Pinecone indexing. NLP-driven personalization via Uvicorn and Instaloader integration.</div>
-      <div class="project-stack"><span class="stack-tag">RAG</span><span class="stack-tag">Pinecone</span><span class="stack-tag">Vector Search</span><span class="stack-tag">NLP</span></div>
+      <div class="project-title">Image Generation through Stable Diffusion</div>
+      <div class="project-desc">Fine-tuned Stable Diffusion 1.5 with a custom Text VAE (KL weight 0.001) trained from scratch. UNet at LR 1e-5; Text VAE at 1e-4 over 50 epochs on 4x32x32 latent space. Batch size 128 on 48GB VRAM.</div>
+      <div class="project-stack"><span class="stack-tag">Stable Diffusion 1.5</span><span class="stack-tag">Text VAE</span><span class="stack-tag">KL Regularisation</span></div>
+      <a class="project-link" href="https://github.com/renethsimon13/Image-Generation-through-Stable-Diffusion" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;fill:currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> View on GitHub</a>
     </div>
     <div class="project-card reveal">
       <div class="project-number">Project 06</div>
-      <div class="project-title">Aerial Greenery Monitoring System</div>
-      <div class="project-desc">YOLOv8 instance segmentation over 174,000 sq. ft. of aerial imagery. Segmentation-based analysis identified a potential 36% increase in green coverage for sustainability research.</div>
-      <div class="project-stack"><span class="stack-tag">YOLOv8</span><span class="stack-tag">Instance Segmentation</span><span class="stack-tag">Aerial Imagery</span></div>
+      <div class="project-title">Speech-ER &mdash; Speech Emotion Recognition</div>
+      <div class="project-desc">Emotion recognition pipeline using RAVDESS. Praat/parselmouth for prosodic feature extraction (pitch, energy, MFCCs) with deep learning classification. Columbia Advanced Spoken Language Processing coursework.</div>
+      <div class="project-stack"><span class="stack-tag">Speech Processing</span><span class="stack-tag">Parselmouth</span><span class="stack-tag">RAVDESS</span></div>
+      <a class="project-link" href="https://github.com/renethsimon13/Speech-ER" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;fill:currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> View on GitHub</a>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-number">Project 07</div>
+      <div class="project-title">Guitar AMT &mdash; Automatic Music Transcription</div>
+      <div class="project-desc">Converts raw guitar audio into structured musical notation using deep learning. Onset detection, pitch estimation, and note duration modelling. Personal project at the intersection of audio ML and music.</div>
+      <div class="project-stack"><span class="stack-tag">Audio ML</span><span class="stack-tag">Music Transcription</span><span class="stack-tag">Signal Processing</span></div>
+      <a class="project-link" href="https://github.com/renethsimon13/Guitar-amt" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;fill:currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> View on GitHub</a>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-number">Project 08</div>
+      <div class="project-title">Sous Chef &mdash; Recipe Recommender System</div>
+      <div class="project-desc">Personalised recipe recommendation using collaborative filtering and content-based methods. Matches users to recipes based on ingredients, dietary preferences, and interaction history.</div>
+      <div class="project-stack"><span class="stack-tag">Recommender Systems</span><span class="stack-tag">Collaborative Filtering</span><span class="stack-tag">NLP</span></div>
+      <a class="project-link" href="https://github.com/renethsimon13/Sous-Chef-Recipe-Recommender-system" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;fill:currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> View on GitHub</a>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-number">Project 09</div>
+      <div class="project-title">Plant Disease Detection &mdash; Supervised ML</div>
+      <div class="project-desc">CNN transfer learning pipeline for plant disease classification from leaf images. Trained with data augmentation for real-world robustness.</div>
+      <div class="project-stack"><span class="stack-tag">Computer Vision</span><span class="stack-tag">Transfer Learning</span><span class="stack-tag">CNN</span><span class="stack-tag">PyTorch</span></div>
+      <a class="project-link" href="https://github.com/renethsimon13/Plant-Disease-Detection-Supervised-ML" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;fill:currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> View on GitHub</a>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-number">Project 10</div>
+      <div class="project-title">Custom Knowledge Base Chatbot</div>
+      <div class="project-desc">Domain-specific RAG chatbot for Gadgeon Systems. Token-aware chunking (100 tokens/chunk), msmarco-distilbert embeddings, cosine retrieval, GPT4ALL-13B Snoozy via LlamaCpp locally. 94% accuracy on internal queries. Strict no-hallucination prompt.</div>
+      <div class="project-stack"><span class="stack-tag">LangChain</span><span class="stack-tag">LlamaCpp</span><span class="stack-tag">Sentence Transformers</span><span class="stack-tag">RAG</span></div>
+      <a class="project-link" href="https://github.com/renethsimon13/Custom-Knowledge-Base-Chatbot" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;fill:currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> View on GitHub</a>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-number">Project 11</div>
+      <div class="project-title">YOLOv8 Instance Segmentation for Green Tree Population</div>
+      <div class="project-desc">YOLOv8n-seg fine-tuned for 20 epochs at 800px on Roboflow-annotated aerial imagery. Per-class mask extraction over 174,000 sq. ft. for Airis4D. Identified a potential 36% increase in green coverage.</div>
+      <div class="project-stack"><span class="stack-tag">YOLOv8</span><span class="stack-tag">Instance Segmentation</span><span class="stack-tag">Roboflow</span><span class="stack-tag">Aerial CV</span></div>
+      <a class="project-link" href="https://github.com/renethsimon13/YOLO-V8-Instance-Segmentation-for-Green-Tree-Population" target="_blank"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;fill:currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> View on GitHub</a>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-number">Project 12</div>
+      <div class="project-title">ReelsAI &mdash; Short-Form Video Intelligence</div>
+      <div class="project-desc">Video analysis pipeline for content creators at YesYem LLC. Hybrid LDA + LLM topic modelling converts content signals into creator-legible feedback. Internal tool, tested at YesYem.</div>
+      <div class="project-stack"><span class="stack-tag">FastAPI</span><span class="stack-tag">Computer Vision</span><span class="stack-tag">LDA</span><span class="stack-tag">LLM</span></div>
+      <a class="project-link" href="#" style="opacity:.5;pointer-events:none;cursor:default"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;fill:currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> Private Repo</a>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-number">Project 13</div>
+      <div class="project-title">YemNews &mdash; Personalised News Recommendation</div>
+      <div class="project-desc">RAG-powered recommendation over hundreds of internet sources via Pinecone and sentence-transformer embeddings. Topic relevance as primary metric. Built and tested internally at YesYem.</div>
+      <div class="project-stack"><span class="stack-tag">RAG</span><span class="stack-tag">Pinecone</span><span class="stack-tag">Vector Search</span><span class="stack-tag">NLP</span></div>
+      <a class="project-link" href="#" style="opacity:.5;pointer-events:none;cursor:default"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:12px;height:12px;fill:currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg> Private Repo</a>
     </div>
   </div>
 </section>
 
-<!-- ── PUBLICATIONS ── -->
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-eyebrow">05</div>
+  <h2 class="sec-title">Professional Experience</h2>
+  <div class="exp-entries">
+    <div class="exp-card reveal">
+      <div class="exp-header"><span class="exp-role">AI Developer Intern</span><span class="exp-period">Jul 2024 &ndash; Sep 2024</span></div>
+      <div class="exp-org">YesYem LLC, Seattle, WA (Remote)</div>
+      <ul class="exp-bullets">
+        <li>Built the core video analysis pipeline for ReelsAI, a creator-facing tool designed to help short-form video creators understand what drives engagement and views. The pipeline handled video ingestion, frame extraction, and visual feature encoding using computer vision models.</li>
+        <li>The central technical challenge was making topic modelling useful at sub-minute video granularity. Standard LDA produced broad, low-signal clusters. Solved this by combining LDA for coarse topic distributions with an LLM post-processing step that converted cluster centroids into human-readable, actionable creator feedback labels.</li>
+        <li>Built and optimised the YemNews personalised news recommendation engine using vector embeddings, RAG, and Pinecone indexing over hundreds of internet sources, improving topic relevance for general users. Served via FastAPI and Uvicorn.</li>
+        <li>Both systems were tested internally. In retrospect, the main improvement I would make is replacing general-purpose pretrained LLMs with fine-tuned models for the specific feedback and classification tasks, and adopting a more modular pipeline architecture for independent iteration on each component.</li>
+      </ul>
+    </div>
+    <div class="exp-card reveal">
+      <div class="exp-header"><span class="exp-role">Applied AI Intern</span><span class="exp-period">Jun 2024 &ndash; Jul 2024</span></div>
+      <div class="exp-org">Airis4D, Pathanamthitta, India</div>
+      <ul class="exp-bullets">
+        <li>Developed a YOLOv8 instance segmentation pipeline to analyse 174,000 sq. ft. of aerial imagery, automating plant and tree population monitoring for a community-based bio-science research initiative.</li>
+        <li>Identified a potential 36% increase in green coverage through segmentation-based ecological assessment, contributing directly to data-driven sustainability research at Airis4D.</li>
+      </ul>
+    </div>
+    <div class="exp-card reveal">
+      <div class="exp-header"><span class="exp-role">Analytics Team Intern</span><span class="exp-period">Jun 2023 &ndash; Jul 2023</span></div>
+      <div class="exp-org">Gadgeon Smart Systems Pvt. Ltd, Kochi, India</div>
+      <ul class="exp-bullets">
+        <li>Designed a domain-specific knowledge base chatbot achieving 94% accuracy on an internal query test set, using GPT4ALL Snoozy (LlamaCpp) and LangChain with a strict no-hallucination RAG prompt. See <strong>Project 10</strong> in the projects section for the full technical architecture.</li>
+        <li>Built a token-aware document chunking pipeline with msmarco-distilbert-base-tas-b embeddings and cosine similarity retrieval, enabling precise, context-grounded responses over 50+ private document sources.</li>
+      </ul>
+    </div>
+    <div class="exp-card reveal">
+      <div class="exp-header"><span class="exp-role">Vice President</span><span class="exp-period">May 2023 &ndash; May 2024</span></div>
+      <div class="exp-org">Cinefilia &mdash; The Filmmaking &amp; Dramatics Club, Manipal University Jaipur</div>
+      <ul class="exp-bullets">
+        <li>Led Manipal University's premier cultural club to national recognition, overseeing administration, event execution, and cross-team coordination across a full academic year.</li>
+        <li>Organised nationwide theatre and filmmaking festivals drawing 8,000&ndash;10,000 attendees, managing budgets, vendor negotiations, and on-site logistics.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
 <section id="publications">
   <div class="sec-eyebrow">06</div>
   <h2 class="sec-title">Publications</h2>
   <div class="pub-list">
-    <!-- Entire card is a link to the DOI -->
     <a class="pub-card reveal" href="https://doi.org/10.1007/s43465-025-01664-3" target="_blank">
       <div class="pub-idx">01</div>
       <div>
         <div class="pub-title">Charcot Neuroarthropathy: Identification and Classification using Artificial Intelligence</div>
         <div class="pub-authors">Reneth Raj Simon, Inderjit Singh, Ani Susan Abraham, Pratik Vishavadia, Rajesh Simon</div>
-        <div class="pub-venue">Indian Journal of Orthopaedics &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; DOI: 10.1007/s43465-025-01664-3</div>
-        <!-- Save journal_photo.jpeg in same folder — this will show the journal cover/screenshot -->
+        <div class="pub-venue">Indian Journal of Orthopaedics &nbsp;&middot;&nbsp; 2026 &nbsp;&middot;&nbsp; DOI: 10.1007/s43465-025-01664-3</div>
+        <div style="font-size:.78rem;color:var(--muted);margin-top:6px;line-height:1.6;">Demonstrates that AI can classify and localise Charcot neuroarthropathy from foot radiographs at 93.39% accuracy, with 91.3% agreement with specialist surgeon classifications, performing on par with expert clinicians even in resource-limited settings where specialist interpretation is not always available.</div>
         <img src="journal_photo.webp" alt="Journal cover" class="pub-journal-photo" onerror="this.style.display='none'">
       </div>
       <div class="pub-status published">Published</div>
@@ -531,14 +536,15 @@ footer{position:relative;z-index:1;padding:48px 60px;background:var(--navy);disp
       <div>
         <div class="pub-title">A Deep Learning Approach for Classification and Localisation of Charcot Neuroarthropathy in Foot Radiographs</div>
         <div class="pub-authors">Reneth Raj Simon, Priya Goyal, Vaishali Yadav</div>
-        <div class="pub-venue">Multimedia Tools and Applications &nbsp;·&nbsp; Springer</div>
+        <div class="pub-venue">Multimedia Tools and Applications &nbsp;&middot;&nbsp; Springer &nbsp;&middot;&nbsp; Under Review</div>
+        <div style="font-size:.78rem;color:var(--muted);margin-top:6px;line-height:1.6;">A full technical treatment of the pipeline for a computer science audience, covering architecture design decisions, segmentation-classification coupling, and error analysis. Where the medical journal paper establishes clinical utility, this paper examines why the system works and how DeepLabV3+ and EfficientNet-B3 with ECA attention handle the visual ambiguity that makes Charcot foot so frequently misdiagnosed.</div>
       </div>
       <div class="pub-status review">Under Review</div>
     </a>
   </div>
 </section>
 
-<!-- ── SKILLS ── -->
+<!-- SKILLS -->
 <section id="skills">
   <div class="sec-eyebrow">07</div>
   <h2 class="sec-title">Skills</h2>
@@ -546,50 +552,39 @@ footer{position:relative;z-index:1;padding:48px 60px;background:var(--navy);disp
     <div class="reveal">
       <div class="skill-group-head">Languages</div>
       <div class="skill-tags">
-        <span class="skill-pill">Python</span>
-        <span class="skill-pill">SQL / MySQL</span>
-        <span class="skill-pill">C Programming</span>
+        <span class="skill-pill">Python</span><span class="skill-pill">SQL / MySQL</span><span class="skill-pill">C Programming</span>
       </div>
     </div>
     <div class="reveal">
       <div class="skill-group-head">Frameworks &amp; Libraries</div>
       <div class="skill-tags">
-        <span class="skill-pill">PyTorch</span>
-        <span class="skill-pill">TensorFlow</span>
-        <span class="skill-pill">Keras</span>
-        <span class="skill-pill">LangChain</span>
-        <span class="skill-pill">FastAPI</span>
-        <span class="skill-pill">Scikit-Learn</span>
-        <span class="skill-pill">Pandas</span>
-        <span class="skill-pill">NumPy</span>
-        <span class="skill-pill">Matplotlib</span>
-        <span class="skill-pill">Seaborn</span>
+        <span class="skill-pill">PyTorch</span><span class="skill-pill">TensorFlow</span><span class="skill-pill">Keras</span>
+        <span class="skill-pill">LangChain</span><span class="skill-pill">FastAPI</span><span class="skill-pill">Scikit-Learn</span>
+        <span class="skill-pill">Pandas</span><span class="skill-pill">NumPy</span><span class="skill-pill">Matplotlib</span><span class="skill-pill">Seaborn</span>
+        <span class="skill-pill">HuggingFace Transformers</span><span class="skill-pill">Diffusers</span>
       </div>
     </div>
     <div class="reveal">
       <div class="skill-group-head">Domains</div>
       <div class="skill-tags">
-        <span class="skill-pill">Machine Learning</span>
-        <span class="skill-pill">Deep Learning</span>
-        <span class="skill-pill">Computer Vision</span>
-        <span class="skill-pill">NLP / LLMs</span>
-        <span class="skill-pill">RAG Pipelines</span>
-        <span class="skill-pill">Multimodal AI</span>
-        <span class="skill-pill">Medical Imaging</span>
+        <span class="skill-pill">Machine Learning</span><span class="skill-pill">Deep Learning</span>
+        <span class="skill-pill">Computer Vision</span><span class="skill-pill">NLP / LLMs</span>
+        <span class="skill-pill">RAG Pipelines</span><span class="skill-pill">Multimodal AI</span>
+        <span class="skill-pill">Medical Imaging</span><span class="skill-pill">Audio / Speech ML</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── CONTACT ── -->
+<!-- CONTACT -->
 <section id="contact">
   <div class="sec-eyebrow">08</div>
   <h2 class="sec-title">Contact</h2>
   <div class="contact-grid">
     <div class="contact-info-list">
       <div class="ci-row"><span class="ci-label">Phone</span><span class="ci-val">+1 (914) 438-0034</span></div>
-      <div class="ci-row"><span class="ci-label">Email</span><span class="ci-val"><a href="mailto:rs4761@columbia.edu">rs4761@columbia.edu</a></span></div>
-      <div class="ci-row"><span class="ci-label">Alt Email</span><span class="ci-val"><a href="mailto:renethraj@gmail.com">renethraj@gmail.com</a></span></div>
+      <div class="ci-row"><span class="ci-label">Email</span><span class="ci-val"><a href="/cdn-cgi/l/email-protection#9eecedaaa9a8afdefdf1f2ebf3fcf7ffb0fbfaeb"><span class="__cf_email__" data-cfemail="82f0f1b6b5b4b3c2e1edeef7efe0ebe3ace7e6f7">[email&#160;protected]</span></a></span></div>
+      <div class="ci-row"><span class="ci-label">Alt Email</span><span class="ci-val"><a href="/cdn-cgi/l/email-protection#493b2c272c3d213b2823092e24282025672a2624"><span class="__cf_email__" data-cfemail="fb899e959e8f93899a91bb9c969a9297d5989496">[email&#160;protected]</span></a></span></div>
       <div class="ci-row"><span class="ci-label">Address</span><span class="ci-val">521 West 112th Street, Apt. 53,<br>Manhattan, New York, NY, USA</span></div>
       <div class="ci-row"><span class="ci-label">LinkedIn</span><span class="ci-val"><a href="https://www.linkedin.com/in/reneth-raj-simon-855153217/" target="_blank">linkedin.com/in/reneth-raj-simon</a></span></div>
       <div class="ci-row"><span class="ci-label">GitHub</span><span class="ci-val"><a href="https://github.com/renethsimon13" target="_blank">github.com/renethsimon13</a></span></div>
@@ -600,7 +595,7 @@ footer{position:relative;z-index:1;padding:48px 60px;background:var(--navy);disp
         <div class="cta-headline">Let's build something that matters.</div>
         <p class="cta-body">Whether you are looking for a research collaborator, an ML engineering hire, or simply want to exchange ideas, I am always open to a conversation.</p>
         <div class="cta-links">
-          <a href="mailto:rs4761@columbia.edu" class="cta-link primary">Send an Email</a>
+          <a href="/cdn-cgi/l/email-protection#3e4c4d0a09080f7e5d51524b535c575f105b5a4b" class="cta-link primary">Send an Email</a>
           <a href="https://www.linkedin.com/in/reneth-raj-simon-855153217/" target="_blank" class="cta-link secondary">Connect on LinkedIn</a>
           <a href="https://renethsimon13.github.io/Reneth-Raj-Simon---CV/" target="_blank" class="cta-link secondary">View Full CV</a>
         </div>
@@ -608,7 +603,6 @@ footer{position:relative;z-index:1;padding:48px 60px;background:var(--navy);disp
     </div>
   </div>
 </section>
-
 </main>
 
 <footer>
@@ -616,27 +610,34 @@ footer{position:relative;z-index:1;padding:48px 60px;background:var(--navy);disp
     <span class="footer-name">Reneth Raj Simon</span>
     <span class="footer-tagline">AI Researcher &nbsp;&middot;&nbsp; ML Engineer &nbsp;&middot;&nbsp; Columbia University</span>
   </div>
-  <div class="footer-center">© 2026</div>
+  <div class="footer-center">&copy; 2026</div>
   <ul class="footer-right">
     <li><a href="#education">Education</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="https://github.com/renethsimon13" target="_blank">GitHub ↗</a></li>
+    <li><a href="https://github.com/renethsimon13" target="_blank">GitHub</a></li>
   </ul>
 </footer>
 
-<script>
-// Cursor
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function toggleMore(btn){
+  var extra=document.getElementById('moreProjects');
+  var open=btn.getAttribute('aria-expanded')==='true';
+  btn.setAttribute('aria-expanded',String(!open));
+  btn.classList.toggle('open',!open);
+  extra.classList.toggle('visible',!open);
+  var txt=btn.childNodes[btn.childNodes.length-1];
+  if(txt&&txt.nodeType===3){
+    txt.textContent=open?' Show More Projects (9)':' Show Fewer Projects';
+  }
+}
 const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
 (function a(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a)})();
-
-// Neural canvas — light mode, subtle navy nodes
 const canvas=document.getElementById('neural-canvas'),ctx=canvas.getContext('2d');
-let W,H;
-const nodes=[];
+let W,H;const nodes=[];
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
 resize();window.addEventListener('resize',resize);
 for(let i=0;i<55;i++)nodes.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:.7+Math.random()*1.2});
@@ -645,14 +646,12 @@ function draw(){
   nodes.forEach(n=>{n.x+=n.vx;n.y+=n.vy;if(n.x<0||n.x>W)n.vx*=-1;if(n.y<0||n.y>H)n.vy*=-1});
   for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
     const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y,d=Math.sqrt(dx*dx+dy*dy);
-    if(d<145){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle=`rgba(26,35,64,${.07*(1-d/145)})`;ctx.lineWidth=.6;ctx.stroke()}
+    if(d<145){ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y);ctx.strokeStyle='rgba(26,35,64,'+(0.07*(1-d/145))+')';ctx.lineWidth=.6;ctx.stroke()}
   }
   nodes.forEach(n=>{ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2);ctx.fillStyle='rgba(26,35,64,.18)';ctx.fill()});
   requestAnimationFrame(draw);
 }
 draw();
-
-// Scroll reveal — make all .reveal elements visible immediately on load too
 function revealAll(){
   document.querySelectorAll('.reveal').forEach(el=>{
     new IntersectionObserver(([e],obs)=>{
@@ -660,11 +659,8 @@ function revealAll(){
     },{threshold:0.05,rootMargin:'0px 0px -40px 0px'}).observe(el);
   });
 }
-if(document.readyState==='loading'){
-  document.addEventListener('DOMContentLoaded',revealAll);
-}else{
-  revealAll();
-}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',revealAll);}
+else{revealAll();}
 </script>
 </body>
 </html>
